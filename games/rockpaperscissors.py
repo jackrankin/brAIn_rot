@@ -11,9 +11,9 @@ class RPS:
 		self.init_game()
 
 	def _detect_win(self):
-		if self.score1 == 1000:
+		if self.score1 == 2:
 			return 1
-		elif self.score2 == 1000:
+		elif self.score2 == 2:
 			return 2
 		return 0
 
@@ -49,14 +49,16 @@ class RPS:
 
 	def init_game(self):
 		while not self._detect_win():
-			time.sleep(1)
+			# time.sleep(1)
 			self._play_move()
 			self._render()
 
-def random_agent():
-	return np.random.choice(['R', 'P', 'S'])
+# def random_agent():
+# 	return np.random.choice(['R', 'P', 'S'])
 
 # you pass in two agents that both take in the game array and 
 # make a move assuming that it is their turn.
-for i in range(4): print()
-RPS(random_agent, random_agent)
+# for i in range(4): print()
+# RPS(random_agent, random_agent)
+def random_agent():
+  return 'R'
