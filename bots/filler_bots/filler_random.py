@@ -1,3 +1,3 @@
 import numpy as np
-def next_move(board):
+def filler_random():
 	return np.random.choice(np.arange(1, 9))

@@ -83,7 +83,7 @@ class Filler:
 		while not self._detect_win():
 			self._play_move()
 			if self.render: 
-				time.sleep(1)
+				# time.sleep(1)
 				self._render()
 
 def random_agent(board):
