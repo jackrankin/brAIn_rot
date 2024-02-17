@@ -17,6 +17,7 @@ class Tron:
 		self.board[9][18] = 2
 		self.render = render
 		self.init_game()
+		self.winner = 0
 
 	def _detect_loss(self):
 		dead1 = 0
@@ -66,11 +67,7 @@ class Tron:
 				time.sleep(1)
 				self._render()
 		if loss == 1:
-			print("RED PLAYER WINS")
+			self.winner = 2
 		elif loss == 2:
-			print("BLUE PLAYER WINS")
-
-
-
-
-
+			self.winner = 1
+			

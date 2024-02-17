@@ -19,6 +19,7 @@ class Filler:
 		self.p2c = self.board[7][0]
 		self.render = render
 		self.init_game()
+		self.winner = 0
 
 	def _detect_win(self):
 		colors = defaultdict(int)
@@ -80,17 +81,14 @@ class Filler:
 			print("".join(arr))
 
 	def init_game(self):
-		while not self._detect_win():
+		win = 0
+		while not win:
 			self._play_move()
 			if self.render: 
 				# time.sleep(1)
 				self._render()
-
-
-# you pass in two agents that both take in the game array and 
-# make a move assuming that it is their turn.
-# for i in range(8): print()
-# Filler(random_agent, random_agent, True)
-
-
-
+			win = self._detect_win()
+		if win == 1:
+			self.winner = 1
+		elif win == 2:
+			self.winner = 2
