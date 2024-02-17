@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import { python } from '@codemirror/lang-python';
-import { Box, Button, Dialog, DialogContent, DialogContentText, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogContent, DialogContentText, Stack, TextField } from '@mui/material';
 import { code_map } from './StarterCode';
 import axios from 'axios';
 
