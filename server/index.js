@@ -18,7 +18,7 @@ app.post('/play_bots', (req, res) => {
 		args: [req.body.player1, req.body.player2, req.body.game]
 	};
 
-	PythonShell.run('test.py', options).then(messages => {
+	PythonShell.run('./../bots/play_two_bots.py', options).then(messages => {
 		console.log('results: %j', messages);
 		res.json({ output: messages });
 	});
