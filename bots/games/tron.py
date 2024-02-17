@@ -70,13 +70,7 @@ class Tron:
 		elif loss == 2:
 			print("BLUE PLAYER WINS")
 
-def random_agent(board, me, opp):
-	return np.random.choice(np.arange(0,4))
 
-# you pass in two agents that both take in the game array and 
-# make a move assuming that it is their turn.
-for i in range(20): print()
-Tron(random_agent, random_agent, True)
 
 
 

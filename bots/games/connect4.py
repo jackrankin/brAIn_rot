@@ -94,7 +94,3 @@ def random_agent(board):
 		return -1
 	return np.random.choice(poss)
 
-# you pass in two agents that both take in the game array and 
-# make a move assuming that it is their turn.
-for i in range(6):print()
-Connect4(random_agent, random_agent, True)
