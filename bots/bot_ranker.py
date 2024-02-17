@@ -58,6 +58,3 @@ def rank_bot(bot_name, game_name):
 			rank = i
 
 	return rank
-
-rank = rank_bot("filler_random", "filler")
-print(rank)
