@@ -18,7 +18,7 @@ function GameView( { game_name, player1, player2 } ) {
 
         getGame();
 
-	}, []);
+	}, [player1, player2, game_name]);
   
 	return (
         <Box display='grid' justifyContent='center' padding={2}>

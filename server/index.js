@@ -15,10 +15,11 @@ app.post('/play_bots', (req, res) => {
 	let options = {
 		mode: 'text',
 		pythonOptions: ['-u'],
+		scriptPath: './../bots/',
 		args: [req.body.player1, req.body.player2, req.body.game]
 	};
 
-	PythonShell.run('./../bots/play_two_bots.py', options).then(messages => {
+	PythonShell.run('./play_two_bots.py', options).then(messages => {
 		console.log('results: %j', messages);
 		res.json({ output: messages });
 	});
