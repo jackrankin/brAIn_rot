@@ -41,10 +41,8 @@ def rank_bot(bot_name, game_name):
 
 	for bot in game_bots:
 		for opp in game_bots:
-
 			opp = game_bots[opp]
 			bot = game_bots[bot]
-
 			env = games_dictionary[game_name](bot, opp, False)
 
 			if env.winner == 1:
@@ -58,6 +56,30 @@ def rank_bot(bot_name, game_name):
 			rank = i
 
 	return rank
+
+
+def get_leaderboard(game_name):
+	game_bots = get_bot_dict(game_name)
+	bot_wins = defaultdict(int)	
+	rank = len(game_bots) - 1
+
+	for bot in game_bots:
+		for opp in game_bots:
+			opp = game_bots[opp]
+			bot = game_bots[bot]
+			env = games_dictionary[game_name](bot, opp, False)
+
+			if env.winner == 1:
+				bot_wins[bot] += 1
+			else:
+				bot_wins[opp] += 1
+
+	ranking = sorted(bot_wins.keys(), key = lambda x : bot_wins[x])
+	for i in range(len(ranking)):
+		ranking[i] = (ranking[i], i+1)
+	for i in ranking:
+		print(i)
+	return ranking
 
 def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="connect4"):
 	

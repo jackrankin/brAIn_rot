@@ -20,9 +20,11 @@ class Connect4(object):
 
 		for i in range(len(self.board)):
 			for j in range(len(self.board[0])):
+
 				if self.board[i][j]:
 					if i and j and self.board[i][j] == self.board[i-1][j-1]:
 						dp[(i,j)][0] = dp[(i-1,j-1)][0] + 1
+
 					if j and self.board[i][j] == self.board[i][j-1]:
 						dp[(i,j)][1] = dp[(i,j-1)][1] + 1
 					if i and self.board[i][j] == self.board[i-1][j]:
@@ -30,13 +32,15 @@ class Connect4(object):
 					if 4 in dp[(i,j)]:
 						return self.board[i][j]
 				back_i = i
-				back_j = j - 1
+				back_j = j
+
 				if self.board[back_i][back_j]:
-					if j > -1 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j+1]:
+					if j < 6 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j+1]:
 						back_dp[(back_i,back_j)][0] = back_dp[(back_i-1,back_j+1)][0] + 1
-					if j > -1 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j]:
+
+					if i and self.board[back_i][back_j] == self.board[back_i-1][back_j]:
 						back_dp[(back_i,back_j)][1] = back_dp[(back_i-1,back_j)][1] + 1
-					if j > -1 and self.board[back_i][back_j] == self.board[back_i][back_j+1]:
+					if j < 6 and self.board[back_i][back_j] == self.board[back_i][back_j+1]:
 						back_dp[(back_i,back_j)][2] = back_dp[(back_i,back_j+1)][2] + 1
 					if 4 in back_dp[(back_i,back_j)]:
 						return self.board[back_i][back_j]
