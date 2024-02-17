@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/games/__pycache__
+/bots/games/__pycache__
+/bots/__pycache__
 /server/node_modules
 /node_modules
 /.pnp
