@@ -10,6 +10,7 @@ class Connect4:
 		self.turn = 1
 		self.render = True
 		self.init_game()
+		self.winner = 0
 
 	def _detect_win(self):
 		ans = 0
@@ -54,11 +55,10 @@ class Connect4:
 
 	def _render(self):
 		# clears teh lines
-		LINE_UP = '\033[1A'
-		LINE_CLEAR = '\x1b[2K'
-		for i in range(6):
-			print(LINE_UP, end=LINE_CLEAR)
-
+		# LINE_UP = '\033[1A'
+		# LINE_CLEAR = '\x1b[2K'
+		# for i in range(6):
+			# print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board[::-1]:
 			arr = []
 			for char in i:
@@ -69,28 +69,20 @@ class Connect4:
 				else:
 					arr.append("⚪️")
 			print("".join(arr))
+		print()
 
 	def init_game(self):
 		win = 0
 		while not win:
-
 			self._play_move()
 			if self.render:
 				time.sleep(1)
 				self._render()
 			win = self._detect_win()
-			if win:
-				print("PLAYER", win, "HAS WON")
 
-def random_agent(board):
-	poss = []
-	for i in range(len(board[0])):
-		s = 0
-		for j in range(len(board)):
-			s += board[j][i] == 0
-		if s:
-			poss.append(i)
-	if not poss:
-		return -1
-	return np.random.choice(poss)
-
+		if win == 1:
+			self.winner = 1
+		elif win == 2:
+			self.winner = 2
+		else:
+			self.winner = 3
