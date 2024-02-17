@@ -2,7 +2,7 @@ import time
 import numpy as np
 from collections import defaultdict
 
-class Tron:
+class Tron(object):
 	def __init__(self, player1, player2, render):
 		self.p1 = player1
 		self.p2 = player2
@@ -70,3 +70,5 @@ class Tron:
 			self.winner = 2
 		elif loss == 2:
 			self.winner = 1
+
+		print(self.winner)

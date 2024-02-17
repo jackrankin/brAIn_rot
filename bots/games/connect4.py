@@ -2,7 +2,7 @@ from collections import defaultdict
 import numpy as np
 import time
 
-class Connect4:
+class Connect4(object):
 	def __init__(self, player1, player2, render):
 		self.p1 = player1
 		self.p2 = player2
@@ -14,8 +14,10 @@ class Connect4:
 
 	def _detect_win(self):
 		ans = 0
+
 		dp = defaultdict(lambda : [1,1,1])
 		back_dp = defaultdict(lambda : [1,1,1])
+
 		for i in range(len(self.board)):
 			for j in range(len(self.board[0])):
 				if self.board[i][j]:
@@ -30,11 +32,11 @@ class Connect4:
 				back_i = i
 				back_j = j - 1
 				if self.board[back_i][back_j]:
-					if i and self.board[back_i][back_j] == self.board[back_i-1][back_j+1]:
+					if j > -1 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j+1]:
 						back_dp[(back_i,back_j)][0] = back_dp[(back_i-1,back_j+1)][0] + 1
-					if i and self.board[back_i][back_j] == self.board[back_i-1][back_j]:
+					if j > -1 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j]:
 						back_dp[(back_i,back_j)][1] = back_dp[(back_i-1,back_j)][1] + 1
-					if self.board[back_i][back_j] == self.board[back_i][back_j+1]:
+					if j > -1 and self.board[back_i][back_j] == self.board[back_i][back_j+1]:
 						back_dp[(back_i,back_j)][2] = back_dp[(back_i,back_j+1)][2] + 1
 					if 4 in back_dp[(back_i,back_j)]:
 						return self.board[back_i][back_j]
@@ -76,7 +78,7 @@ class Connect4:
 		while not win:
 			self._play_move()
 			if self.render:
-				time.sleep(1)
+				# time.sleep(1)
 				self._render()
 			win = self._detect_win()
 
@@ -84,5 +86,5 @@ class Connect4:
 			self.winner = 1
 		elif win == 2:
 			self.winner = 2
-		else:
-			self.winner = 3
+
+		print(self.winner)

@@ -2,7 +2,7 @@ import time
 import numpy as np
 from collections import defaultdict
 
-class Filler:
+class Filler(object):
 	def __init__(self, player1, player2, render):
 		self.p1 = player1
 		self.p2 = player2
@@ -82,7 +82,7 @@ class Filler:
 				arr.append(self.color_map[color])
 			print("".join(arr))
 		print()
-		
+
 	def init_game(self):
 		win = 0
 		while not win:
@@ -94,3 +94,5 @@ class Filler:
 			self.winner = 1
 		elif win == 2:
 			self.winner = 2
+
+		print(self.winner)
