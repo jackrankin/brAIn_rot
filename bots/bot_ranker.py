@@ -64,3 +64,11 @@ def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="c
 	bot = game_bots[your_bot]
 	opp = game_bots[opp_bot]
 	env = games_dictionary[game_name](bot, opp, True)
+
+	if env.winner == 1:
+		print("PLAYER 1 WINS")
+	elif env.winner == 2:
+		print("PLAYER 2 WINS")
+	else:
+		print("A DRAW")
+
