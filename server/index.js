@@ -23,8 +23,25 @@ app.post('/python', (req, res) => {
 		res.json({ output: messages });
 	});
 
-})
+});
+
+app.post('/rps', (req, res) => {
+	fs.appendFileSync('./../games/rockpaperscissors.py', req.body.userCode);
+	console.log(req.body);
+
+	let options = {
+		mode: 'text',
+		pythonOptions: ['-u'],
+		args: [1, 2, 3]
+	};
+
+	PythonShell.run('./../games/rps_runner.py', options).then(messages => {
+		console.log('results: %j', messages);
+		res.json({ output: messages });
+	});
+
+});
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
-})
+});

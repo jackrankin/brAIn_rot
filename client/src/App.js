@@ -16,7 +16,7 @@ function App() {
 
 	const submitCode = () => {
 		axios
-			.post('http://localhost:80/python', {userCode})
+			.post('http://localhost:80/rps', {userCode})
 			.then((res) => {
 				setOutput(res.data.output);
 			});

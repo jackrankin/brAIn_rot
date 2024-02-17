@@ -1,1 +1,2 @@
-print('leaping lizards')
+def random_agent():
+  return 'R'
