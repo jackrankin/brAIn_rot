@@ -16,7 +16,7 @@ games_dictionary = {
 }
 
 def get_bot_dict(game):
-    folder_path = f"./{game}_bots"
+    folder_path = f"{game}_bots"
     files = [f for f in os.listdir(folder_path) if f.endswith(".py") and f != "__init__.py"]
     bot_functions = {}
 
@@ -46,6 +46,7 @@ def rank_bot(bot_name, game_name):
 			bot = game_bots[bot]
 
 			env = games_dictionary[game_name](bot, opp, False)
+			
 			if env.winner == 1:
 				bot_wins[bot] += 1
 			else:
@@ -63,4 +64,4 @@ def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="c
 
 	bot = game_bots[your_bot]
 	opp = game_bots[opp_bot]
-	env = games_dictionary[game_name](bot, opp, True)
+	games_dictionary[game_name](bot, opp, True)
