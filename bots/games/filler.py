@@ -86,8 +86,6 @@ class Filler:
 				# time.sleep(1)
 				self._render()
 
-def random_agent(board):
-	return np.random.choice(np.arange(1, 9))
 
 # you pass in two agents that both take in the game array and 
 # make a move assuming that it is their turn.
