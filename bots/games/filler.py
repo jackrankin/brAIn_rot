@@ -18,6 +18,8 @@ class Filler:
 		self.p1c = self.board[0][7] 
 		self.p2c = self.board[7][0]
 		self.render = render
+		if render:
+			for i in range(8):print()
 		self.init_game()
 		self.winner = 0
 
@@ -85,7 +87,6 @@ class Filler:
 		while not win:
 			self._play_move()
 			if self.render: 
-				# time.sleep(1)
 				self._render()
 			win = self._detect_win()
 		if win == 1:

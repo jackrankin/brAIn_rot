@@ -1,5 +1,5 @@
 import numpy as np
-def random_agent(board):
+def next_move(board):
 	poss = []
 	for i in range(len(board[0])):
 		s = 0

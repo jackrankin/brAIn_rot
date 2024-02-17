@@ -70,4 +70,3 @@ class Tron:
 			self.winner = 2
 		elif loss == 2:
 			self.winner = 1
-			
