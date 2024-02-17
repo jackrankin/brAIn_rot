@@ -46,7 +46,6 @@ class Tron:
 		return loss 
 
 	def _render(self):
-
 		# this will clear the screen 
 		LINE_UP = '\033[1A'
 		LINE_CLEAR = '\x1b[2K'

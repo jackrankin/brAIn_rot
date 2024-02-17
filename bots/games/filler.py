@@ -91,8 +91,8 @@ def random_agent(board):
 
 # you pass in two agents that both take in the game array and 
 # make a move assuming that it is their turn.
-for i in range(8): print()
-Filler(random_agent, random_agent, True)
+# for i in range(8): print()
+# Filler(random_agent, random_agent, True)
 
 
 

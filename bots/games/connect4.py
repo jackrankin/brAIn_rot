@@ -82,7 +82,6 @@ class Connect4:
 			if win:
 				print("PLAYER", win, "HAS WON")
 
-
 def random_agent(board):
 	poss = []
 	for i in range(len(board[0])):
@@ -99,6 +98,3 @@ def random_agent(board):
 # make a move assuming that it is their turn.
 for i in range(6):print()
 Connect4(random_agent, random_agent, True)
-
-
-
