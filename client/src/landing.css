@@ -1,0 +1,14 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Adjust the min and max width as needed */
+  gap: 20px; /* Adjust the gap between cards */
+  padding: 20px; /* Optional padding around the grid */
+  width: 100%; /* Ensure the grid container spans the full width of its parent */
+}
+
+.cardContainer .card {
+  width: 100%;
+}
