@@ -55,10 +55,10 @@ class Connect4:
 
 	def _render(self):
 		# clears teh lines
-		LINE_UP = '\033[1A'
-		LINE_CLEAR = '\x1b[2K'
-		for i in range(6):
-			print(LINE_UP, end=LINE_CLEAR)
+		# LINE_UP = '\033[1A'
+		# LINE_CLEAR = '\x1b[2K'
+		# for i in range(6):
+			# print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board[::-1]:
 			arr = []
 			for char in i:
@@ -69,6 +69,7 @@ class Connect4:
 				else:
 					arr.append("⚪️")
 			print("".join(arr))
+		print()
 
 	def init_game(self):
 		win = 0

@@ -71,17 +71,18 @@ class Filler:
 	def _render(self):
 
 		# this will clear the screen 
-		LINE_UP = '\033[1A'
-		LINE_CLEAR = '\x1b[2K'
-		for i in range(8):
-			print(LINE_UP, end=LINE_CLEAR)
+		# LINE_UP = '\033[1A'
+		# LINE_CLEAR = '\x1b[2K'
+		# for i in range(8):
+			# print(LINE_UP, end=LINE_CLEAR)
 
 		for i in self.board:
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
 			print("".join(arr))
-
+		print()
+		
 	def init_game(self):
 		win = 0
 		while not win:

@@ -10,4 +10,3 @@ def next_move(board):
 	if not poss:
 		return -1
 	return np.random.choice(poss)
-

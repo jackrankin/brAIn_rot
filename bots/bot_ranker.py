@@ -31,8 +31,7 @@ def get_bot_dict(game):
 
         for func_name in dir(module):
             if callable(getattr(module, func_name)):
-                bot_functions[func_name] = getattr(module, func_name)
-
+                bot_functions[module.__name__.split(".")[1]] = getattr(module, func_name)
     return bot_functions
 
 def rank_bot(bot_name, game_name):
@@ -46,7 +45,7 @@ def rank_bot(bot_name, game_name):
 			opp = game_bots[opp]
 			bot = game_bots[bot]
 
-			env = games_dictionary[game_name](bot, opp, True)
+			env = games_dictionary[game_name](bot, opp, False)
 			if env.winner == 1:
 				bot_wins[bot] += 1
 			else:
@@ -58,3 +57,10 @@ def rank_bot(bot_name, game_name):
 			rank = i
 
 	return rank
+
+def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="connect4"):
+	game_bots = get_bot_dict(game_name)
+
+	bot = game_bots[your_bot]
+	opp = game_bots[opp_bot]
+	env = games_dictionary[game_name](bot, opp, True)
