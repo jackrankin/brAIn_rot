@@ -90,8 +90,9 @@ class Connect4(object):
 					arr.append("🔵")
 				else:
 					arr.append("⚪️")
-			b.append(arr[:])
-		self.moves.append(b)
+			b.append("".join(arr))
+
+		self.moves.append("\n".join(b))
 
 	def init_game(self):
 		win = 0

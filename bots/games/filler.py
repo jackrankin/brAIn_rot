@@ -91,9 +91,9 @@ class Filler(object):
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
-			b.append(arr[:])
+			b.append("".join(arr))
 
-		self.moves.append(b)
+		self.moves.append("\n".join(b))
 
 	def init_game(self):
 		win = 0
