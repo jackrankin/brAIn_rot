@@ -107,6 +107,8 @@ class Filler(object):
 			win = self._detect_win()
 		if win == 1:
 			self.winner = 1
+			if self.render: print(self.color_map[self.p1c], "WINS")
 		elif win == 2:
 			self.winner = 2
+			if self.render: print(self.color_map[self.p2c], "WINS")
 

@@ -78,7 +78,6 @@ def get_leaderboard(game_name):
 	ranks = sorted(bot_wins.keys(), key = lambda x : bot_wins[x])
 	for i in range(len(ranks)):
 		ranking[str(i)] = str(ranks[i])
-	print(ranking)
 	return ranking
 
 def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="connect4"):
@@ -97,6 +96,30 @@ def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="c
 			opp_bot = getattr(opp, func_name)
 	
 	result = games_dictionary[game_name](opp_bot, your_bot, False)
+
+	game = {
+		'moves' : result.moves,	
+		'winner' : result.winner,
+	}
+	
+	return game
+
+def play_two_console(your_bot="connect4_random", opp_bot="connect4_random", game_name="connect4"):
+	
+	yours = f"{game_name}_bots.{your_bot}"
+	opp = f"{game_name}_bots.{opp_bot}"
+	yours = importlib.import_module(yours)
+	opp = importlib.import_module(opp)
+
+	for func_name in dir(yours):
+		if callable(getattr(yours, func_name)):
+			your_bot = getattr(yours, func_name)
+
+	for func_name in dir(opp):
+		if callable(getattr(opp, func_name)):
+			opp_bot = getattr(opp, func_name)
+	
+	result = games_dictionary[game_name](opp_bot, your_bot, True)
 
 	game = {
 		'moves' : result.moves,	

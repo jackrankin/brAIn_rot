@@ -108,8 +108,8 @@ class Connect4(object):
 
 		if win == 1:
 			print("🔵 WINS")
-			self.winner = 1
+			if self.render: self.winner = 1
 		elif win == 2:
 			print("🔴 WINS")
-			self.winner = 2
+			if self.render: self.winner = 2
 
