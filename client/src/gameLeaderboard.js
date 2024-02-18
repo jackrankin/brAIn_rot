@@ -62,7 +62,7 @@ export default function Leaderboard() {
     const getGame = () => {
       axios
         .get(
-          "http://127.0.0.1:5000/leaderboard/" + linkMap[routeParams.name]
+          "http://127.0.0.1:5000/leaderboard/" + routeParams.name
         )
         .then((res) => {
           setLeaderboardData(
@@ -126,7 +126,7 @@ export default function Leaderboard() {
             <Button variant="contained" onClick={() => { setShowGame(false) }}>New Battle</Button>
             </Box>
             <GameView
-              game_name={linkMap[routeParams.name]}
+              game_name={routeParams.name}
               player1={bot1}
               player2={bot2}
             /> 

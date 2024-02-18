@@ -3,6 +3,7 @@
 # dependencies
 /bots/games/__pycache__
 /bots/filler_bots/__pycache__
+/bots/rockpaperscissors_bots/__pycache__
 /bots/connect4_bots/__pycache__
 /bots/tron_bots/__pycache__
 /bots/__pycache__
