@@ -96,6 +96,6 @@ def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="c
 			opp_bot = getattr(opp, func_name)
 	
 	result = games_dictionary[game_name](opp_bot, your_bot, False)
-	result.moves['winner'] = result.winner
+	result.moves['winner'] = str(result.winner)
 	
 	return result.moves

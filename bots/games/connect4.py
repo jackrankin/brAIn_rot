@@ -92,7 +92,7 @@ class Connect4(object):
 				else:
 					arr.append("⚪️")
 			b.append(arr[:])
-		self.moves[self.move_counter] = b
+		self.moves[str(self.move_counter)] = b
 		self.move_counter += 1
 
 	def init_game(self):
