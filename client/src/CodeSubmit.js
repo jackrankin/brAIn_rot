@@ -34,10 +34,10 @@ function CodeSubmit({ game_name }) {
 
   const submitCode = () => {
     axios
-      .post("http://localhost:80/submit_code", {
-        code: userCode,
-        game: game_name,
-        name: name,
+      .post('http://127.0.0.1:5000/submit_code', {
+        'code': userCode,
+        'game': game_name,
+        'name': name,
       })
       .then((res) => {
         console.log(res);

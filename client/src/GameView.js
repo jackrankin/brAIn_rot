@@ -14,7 +14,7 @@ function GameView( { game_name, player1, player2 } ) {
                 .get('http://127.0.0.1:5000/two_play/'+player1+'/'+player2+'/'+game_name)
                 .then((res) => {
                     console.log(res);
-                    setFullGame(res.data);
+                    setFullGame(res.data.moves);
                     setWinner(res.data.winner);
                 });
         }
