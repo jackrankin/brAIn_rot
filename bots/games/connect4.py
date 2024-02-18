@@ -53,10 +53,12 @@ class Connect4(object):
 		if self.turn == 1:
 			col = self.p1(self.board)
 		else:
-			col = self.p1(self.board)
-		if col < 0 or col > 6:
+			col = self.p2(self.board)
+
+		if col < 0 or col > 6 or col == None:
 			self.winner = 3 - self.turn
 			return
+
 		for i in range(len(self.board)):
 			if self.board[i][col] == 0:
 				self.board[i][col] = self.turn

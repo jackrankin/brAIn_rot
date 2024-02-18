@@ -19,23 +19,25 @@ games_dictionary = {
 }
 
 def get_bot_dict(game):
-    folder_path = f"{game}_bots"
-    files = [f for f in os.listdir(folder_path) if f.endswith(".py") and f != "__init__.py"]
-    bot_functions = {}
+	folder_path = f"{game}_bots"
+	files = [f for f in os.listdir(folder_path) if f.endswith(".py") and f != "__init__.py"]
+	bot_functions = {}
 
-    for file_name in files:
-        module_name = f"{game}_bots.{file_name[:-3]}"
+	for file_name in files:
+		module_name = f"{game}_bots.{file_name[:-3]}"
         
-        try:
-            module = importlib.import_module(module_name)
-        except ImportError as e:
-            print(f"Error importing module {module_name}: {e}")
-            continue
+		try:
+			module = importlib.import_module(module_name)
+		except ImportError as e:
+			print(f"Error importing module {module_name}: {e}")
+			continue
 
-        for func_name in dir(module):
-            if callable(getattr(module, func_name)):
-                bot_functions[module.__name__.split(".")[1]] = getattr(module, func_name)
-    return bot_functions
+		for func_name in dir(module):
+			if func_name != "next_move":
+				continue
+			if callable(getattr(module, func_name)):
+				bot_functions[module.__name__.split(".")[1]] = getattr(module, func_name)
+	return bot_functions
 
 def rank_bot(bot_name, game_name):
 
@@ -67,11 +69,15 @@ def rank_bot(bot_name, game_name):
 
 def get_leaderboard(game_name):
 	game_bots = get_bot_dict(game_name)
+	
+	print(game_name, game_bots)
+
 	bot_wins = defaultdict(int)	
 	ranking = {}
 
 	for bot in game_bots:
 		for opp in game_bots:
+			print(bot, opp)
 			opp_func = game_bots[opp]
 			bot_func = game_bots[bot]
 			env = games_dictionary[game_name](bot_func, opp_func, False)
