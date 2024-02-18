@@ -12,7 +12,6 @@ class Connect4(object):
 		self.winner = 0
 		self.moves = []
 		self.init_game()
-		
 
 	def _detect_win(self):
 		ans = 0
