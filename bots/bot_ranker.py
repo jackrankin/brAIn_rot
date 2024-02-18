@@ -8,11 +8,13 @@ from collections import defaultdict
 import games.filler
 import games.tron
 import games.connect4
+import games.rockpaperscissors
 
 games_dictionary = {
 	"filler" : games.filler.Filler,
 	"connect4" : games.connect4.Connect4,
-	"tron" : games.tron.Tron
+	"tron" : games.tron.Tron,
+	"rockpaperscissors" : games.rockpaperscissors.RPS
 }
 
 def get_bot_dict(game):
@@ -64,6 +66,7 @@ def get_leaderboard(game_name):
 
 	for bot in game_bots:
 		for opp in game_bots:
+			print(bot, opp)
 			opp_func = game_bots[opp]
 			bot_func = game_bots[bot]
 			env = games_dictionary[game_name](bot_func, opp_func, False)

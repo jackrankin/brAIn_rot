@@ -23,13 +23,6 @@ def get_rank(game_name, bot_name):
 		if result[key] == bot_name:
 			return {"rank" : str(key)}
 	return {}
-	
-@app.route('/submit_code', methods=['POST'])
-def submit_code():
-	print(request.get_json())
-	# fo = open('test.py', "w")
-	# fo.close()
-	return request.get_json()
 
 @app.route('/', methods=['GET'])
 def hello():
