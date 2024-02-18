@@ -4,18 +4,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Connect4Image from "./gameImages/c4.png";
 import TronIMG from "./gameImages/tron.webp";
-import FillerIMG from "./gameImages/filler.png";
-import RockPaperScissorsIMG from "./gameImages/rp.png";
+import c4GIF from "./gameImages/c4.gif";
+import FILLERGIF from "./gameImages/filler.gif";
 import RPGIF from "./gameImages/rp.gif";
 import Leaderboard from "./leaderboard.js";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
-  'Connect4': Connect4Image,
+  'Connect4': c4GIF,
   'Tron': TronIMG,
-  'Filler': FillerIMG,
+  'Filler': FILLERGIF,
   'Rock, Paper, Scissors!': RPGIF,
 };
 const descriptionMap = {
