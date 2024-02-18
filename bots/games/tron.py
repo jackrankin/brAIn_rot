@@ -16,8 +16,10 @@ class Tron(object):
 		self.board[9][2] = 1
 		self.board[9][18] = 2
 		self.render = render
-		self.init_game()
 		self.winner = 0
+		self.move_counter = 0
+		self.moves = {}
+		self.init_game()
 
 	def _detect_loss(self):
 		dead1 = 0
@@ -59,6 +61,17 @@ class Tron(object):
 			print("".join(arr))
 		print()
 
+	def _json_render(self):
+		b = []
+		for i in self.board:
+			arr = []
+			for color in i:
+				arr.append(self.color_map[color])
+			b.append(arr[:])
+
+		self.moves[self.move_counter] = b
+		self.move_counter += 1
+
 	def init_game(self):
 		loss = 0
 		while not loss:
@@ -66,9 +79,11 @@ class Tron(object):
 			if self.render:
 				# time.sleep(1)
 				self._render()
+			else:
+				self._json_render()
 		if loss == 1:
 			self.winner = 2
 		elif loss == 2:
 			self.winner = 1
 
-		print(self.winner)
+		# print(self.winner)

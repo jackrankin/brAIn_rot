@@ -57,7 +57,6 @@ def rank_bot(bot_name, game_name):
 
 	return rank
 
-
 def get_leaderboard(game_name):
 	game_bots = get_bot_dict(game_name)
 	bot_wins = defaultdict(int)	
@@ -95,5 +94,8 @@ def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="c
 	for func_name in dir(opp):
 		if callable(getattr(opp, func_name)):
 			opp_bot = getattr(opp, func_name)
-
-	games_dictionary[game_name](opp_bot, your_bot, True)
+	
+	result = games_dictionary[game_name](opp_bot, your_bot, False)
+	result.moves['winner'] = result.winner
+	
+	return result.moves

@@ -8,9 +8,12 @@ class Connect4(object):
 		self.p2 = player2
 		self.board = [[0] * 7 for _ in range(6)]
 		self.turn = 1
-		self.render = True
-		self.init_game()
+		self.render = render
 		self.winner = 0
+		self.moves = {}
+		self.move_counter = 0
+		self.init_game()
+		
 
 	def _detect_win(self):
 		ans = 0
@@ -33,7 +36,6 @@ class Connect4(object):
 						return self.board[i][j]
 				back_i = i
 				back_j = j
-
 				if self.board[back_i][back_j]:
 					if j < 6 and i and self.board[back_i][back_j] == self.board[back_i-1][back_j+1]:
 						back_dp[(back_i,back_j)][0] = back_dp[(back_i-1,back_j+1)][0] + 1
@@ -77,13 +79,30 @@ class Connect4(object):
 			print("".join(arr))
 		print()
 
+	def _json_render(self):
+		b = []
+
+		for i in self.board[::-1]:
+			arr = []
+			for char in i:
+				if char == 2:
+					arr.append("🔴")
+				elif char == 1:
+					arr.append("🔵")
+				else:
+					arr.append("⚪️")
+			b.append(arr[:])
+		self.moves[self.move_counter] = b
+		self.move_counter += 1
+
 	def init_game(self):
 		win = 0
 		while not win:
 			self._play_move()
 			if self.render:
-				# time.sleep(1)
 				self._render()
+			else:
+				self._json_render()
 			win = self._detect_win()
 
 		if win == 1:
@@ -91,4 +110,3 @@ class Connect4(object):
 		elif win == 2:
 			self.winner = 2
 
-		print(self.winner)

@@ -20,8 +20,12 @@ class Filler(object):
 		self.render = render
 		if render:
 			for i in range(8):print()
-		self.init_game()
 		self.winner = 0
+
+		self.moves = {}
+		self.move_counter = 0
+
+		self.init_game()
 
 	def _detect_win(self):
 		colors = defaultdict(int)
@@ -75,7 +79,6 @@ class Filler(object):
 		# LINE_CLEAR = '\x1b[2K'
 		# for i in range(8):
 			# print(LINE_UP, end=LINE_CLEAR)
-
 		for i in self.board:
 			arr = []
 			for color in i:
@@ -83,16 +86,29 @@ class Filler(object):
 			print("".join(arr))
 		print()
 
+	def _json_render(self):
+		b = []
+
+		for i in self.board:
+			arr = []
+			for color in i:
+				arr.append(self.color_map[color])
+			b.append(arr[:])
+
+		self.moves[self.move_counter] = b
+		self.move_counter += 1
+
 	def init_game(self):
 		win = 0
 		while not win:
 			self._play_move()
 			if self.render: 
 				self._render()
+			else:
+				self._json_render()
 			win = self._detect_win()
 		if win == 1:
 			self.winner = 1
 		elif win == 2:
 			self.winner = 2
 
-		print(self.winner)
