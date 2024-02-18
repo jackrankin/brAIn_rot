@@ -19,3 +19,7 @@
 .leaderboardContainer {
   width: 30%;
 }
+.buttons {
+  justify-content: center;
+  align-items: center;
+}
