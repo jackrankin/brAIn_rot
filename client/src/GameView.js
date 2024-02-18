@@ -5,20 +5,17 @@ import axios from 'axios';
 function GameView( { game_name, player1, player2 } ) {
 
     const [fullGame, setFullGame] = useState([]);
+    const [winner, setWinner] = useState('');
 
     useEffect(() => {
 
 		const getGame = () => {
             axios
-                .post('http://localhost:80/play_bots', { player1: player1, player2: player2, game: game_name })
+                .get('http://127.0.0.1:5000/two_play/'+player1+'/'+player2+'/'+game_name)
                 .then((res) => {
-                    const arr = res.data.output.reduce(function(result, value, index, array) {
-                        if (index % 8 === 0)
-                            result.push(array.slice(index, index + 8).join('\n'));
-                        return result;
-                    }, []);
-                    console.log(arr);
-                    setFullGame(arr);
+                    console.log(res);
+                    setFullGame(res.data);
+                    setWinner(res.data.winner);
                 });
         }
 
