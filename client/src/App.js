@@ -23,7 +23,7 @@ function App() {
 				<CssBaseline />
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
-					<Route path="/Leaderboard" element={<Leaderboard />} />
+					<Route path="/Leaderboard/:name" element={<Leaderboard />} />
 					<Route path="/Game" element={<GameView game_name={'filler'} player1={'filler_random'} player2={'filler_random'}/>} />
 				</Routes>
 			</ThemeProvider>

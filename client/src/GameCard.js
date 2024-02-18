@@ -34,7 +34,7 @@ export default function GameCard({ game_name }) {
   let navigate = useNavigate();
 
   return (
-    <Card onClick={() => navigate("/Leaderboard")}>
+    <Card onClick={() => navigate("/Leaderboard/"+game_name)}>
       <CardActionArea>
         <CardMedia
           component="img"
