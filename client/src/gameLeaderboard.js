@@ -18,9 +18,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import SportsMmaIcon from "@mui/icons-material/SportsMma";
 import GameView from "./GameView.js";
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 const reverseMap = {
   rockpaperscissors: "Rock, Paper, Scissors!",
@@ -43,7 +43,7 @@ export default function Leaderboard() {
   const [codeMode, setCodeMode] = React.useState(true);
   const [showGame, setShowGame] = useState(false);
 
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -61,9 +61,7 @@ export default function Leaderboard() {
   useEffect(() => {
     const getGame = () => {
       axios
-        .get(
-          "http://127.0.0.1:5000/leaderboard/" + routeParams.name
-        )
+        .get("http://127.0.0.1:5000/leaderboard/" + routeParams.name)
         .then((res) => {
           setLeaderboardData(
             Object.entries(res.data).map(([name, value]) => ({
@@ -108,72 +106,98 @@ export default function Leaderboard() {
             </Table>
           </TableContainer>
         </div>
-        <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Code Mode" value="1" />
-              <Tab label="Battle Mode" value="2" />
-            </TabList>
-          </Box>
-          <TabPanel value="1">
-            <CodeSubmit game_name={routeParams.name.toLowerCase()} />
-          </TabPanel>
-          <TabPanel value="2">
-            {showGame ?
-            <div>
-            <Box display='grid' justifyContent='center' padding={1}>
-            <Button variant="contained" onClick={() => { setShowGame(false) }}>New Battle</Button>
-            </Box>
-            <GameView
-              game_name={routeParams.name}
-              player1={bot1}
-              player2={bot2}
-            /> 
-            </div>
-            : 
-            <div>
-            <Typography style={{ padding: 5 }}>
-              Pick the bots you'd like to battle
-            </Typography>
-            <FormControl fullWidth style={{}}>
-              <InputLabel id="demo-simple-select-label">Bot Number 1</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={bot1}
-                label="Bot Number 1"
-                onChange={handleChange1}
+        <Box sx={{ width: "100%", typography: "body1" }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <TabList
+                onChange={handleChange}
+                aria-label="lab API tabs example"
               >
-                {leaderboardData.map((element, index) => (
-                  <MenuItem value={element.value}>{element.value}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Box display="grid" justifyContent="center" padding={1}>
-              <SportsMmaIcon size="xx-large" />
+                <Tab label="Code Mode" value="1" />
+                <Tab label="Battle Mode" value="2" />
+              </TabList>
             </Box>
-            <FormControl fullWidth style={{}}>
-              <InputLabel id="demo-simple-select-label">Bot Number 2</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={bot2}
-                label="Bot Number 2"
-                onChange={handleChange2}
-              >
-                {leaderboardData.map((element, index) => (
-                  <MenuItem value={element.value}>{element.value}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Box display='grid' justifyContent='center' padding={1}>
-            <Button variant="contained" onClick={() => { setShowGame(true) }} disabled={!bot1 || !bot2}>Start Battle</Button>
-            </Box>
-            </div>
-            }
-          </TabPanel>
-        </TabContext>
+            <TabPanel value="1">
+              <CodeSubmit game_name={routeParams.name.toLowerCase()} />
+            </TabPanel>
+            <TabPanel value="2">
+              {showGame ? (
+                <div>
+                  <Box display="grid" justifyContent="center" padding={1}>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        setShowGame(false);
+                      }}
+                    >
+                      New Battle
+                    </Button>
+                  </Box>
+                  <GameView
+                    game_name={routeParams.name}
+                    player1={bot1}
+                    player2={bot2}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Typography style={{ padding: 5 }}>
+                    Pick the bots you'd like to battle
+                  </Typography>
+                  <FormControl fullWidth style={{}}>
+                    <InputLabel id="demo-simple-select-label">
+                      Bot Number 1
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={bot1}
+                      label="Bot Number 1"
+                      onChange={handleChange1}
+                    >
+                      {leaderboardData.map((element, index) => (
+                        <MenuItem value={element.value}>
+                          {element.value}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <Box display="grid" justifyContent="center" padding={1}>
+                    <SportsMmaIcon size="xx-large" />
+                  </Box>
+                  <FormControl fullWidth style={{}}>
+                    <InputLabel id="demo-simple-select-label">
+                      Bot Number 2
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={bot2}
+                      label="Bot Number 2"
+                      onChange={handleChange2}
+                    >
+                      {leaderboardData.map((element, index) => (
+                        <MenuItem value={element.value}>
+                          {element.value}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <Box display="grid" justifyContent="center" padding={1}>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        setShowGame(true);
+                      }}
+                      disabled={!bot1 || !bot2}
+                    >
+                      Start Battle
+                    </Button>
+                  </Box>
+                </div>
+              )}
+            </TabPanel>
+          </TabContext>
         </Box>
       </div>
     </div>
