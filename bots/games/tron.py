@@ -47,7 +47,6 @@ class Tron(object):
 			self.p1trail.add((self.p1c[0], self.p1c[1]))
 			self.board[self.p2c[0]][self.p2c[1]] = 2
 			self.p2trail.add((self.p2c[0], self.p2c[1]))
-
 		return loss 
 
 	def _render(self):
