@@ -14,6 +14,5 @@ def leaderboard(game_name):
 	result = get_leaderboard(game_name)
 	return jsonify(result)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
