@@ -22,9 +22,7 @@ class Filler(object):
 			for i in range(8):print()
 		self.winner = 0
 
-		self.moves = {}
-		self.move_counter = 0
-
+		self.moves = []
 		self.init_game()
 
 	def _detect_win(self):
@@ -61,12 +59,12 @@ class Filler(object):
 		color = None
 		if self.turn == 1:
 			while color == None or color == self.p2c:
-				color = self.p1(self.board)
+				color = self.p1(self.board, 1)
 			self.p1c = color
 			self._update_board(self.p1set, color)
 		else:
 			while color == None or color == self.p1c:
-				color = self.p2(self.board)
+				color = self.p2(self.board, 2)
 			self.p2c = color
 			self._update_board(self.p2set, color)
 		self.turn = 3 - self.turn 
@@ -93,10 +91,9 @@ class Filler(object):
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
-			b.append(arr[:])
+			b.append("".join(arr))
 
-		self.moves[self.move_counter] = b
-		self.move_counter += 1
+		self.moves.append("\n".join(b))
 
 	def init_game(self):
 		win = 0
