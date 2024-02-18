@@ -54,12 +54,16 @@ class Connect4(object):
 			col = self.p1(self.board)
 		else:
 			col = self.p1(self.board)
+		if col < 0 or col > 6:
+			self.winner = 3 - self.turn
+			return
 		for i in range(len(self.board)):
 			if self.board[i][col] == 0:
 				self.board[i][col] = self.turn
 				break
+		else:
+			self.winner = 3 - self.turn
 		self.turn = 3 - self.turn
-		return self._detect_win()
 
 	def _render(self):
 		# clears teh lines
