@@ -45,7 +45,7 @@ export default function Leaderboard({ game }) {
           <TableHead>
             <TableRow>
               <TableCell>Rank</TableCell>
-              <TableCell>Points</TableCell>
+              <TableCell align="right">Bot Name</TableCell>
               {/* <TableCell>Time(s)</TableCell>
               <TableCell>Memory(mb)</TableCell> */}
             </TableRow>
@@ -56,7 +56,7 @@ export default function Leaderboard({ game }) {
                 <TableCell component="th" scope="row">
                   {index + 1}
                 </TableCell>
-                <TableCell>{element.value}</TableCell>
+                <TableCell align="right">{element.value}</TableCell>
               </TableRow>
             ))}
           </TableBody>

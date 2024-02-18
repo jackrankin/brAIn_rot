@@ -88,7 +88,7 @@ export default function Leaderboard() {
               <TableHead>
                 <TableRow>
                   <TableCell>Rank</TableCell>
-                  <TableCell>Bot Name</TableCell>
+                  <TableCell align="right">Bot Name</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -97,7 +97,7 @@ export default function Leaderboard() {
                     <TableCell component="th" scope="row">
                       {index + 1}
                     </TableCell>
-                    <TableCell>{element.value}</TableCell>
+                    <TableCell align="right">{element.value}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
