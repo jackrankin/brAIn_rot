@@ -18,7 +18,7 @@ function CodeSubmit({ game_name }) {
   console.log(game_name);
   const [userCode, setUserCode] = useState(
     game_name == "rockpaperscissors"
-      ? 'def rps_move():\n  return "R"\n\n\n\n\n\n\n\n\n'
+      ? '# Write the best algorithm for rock, paper, scissors!\ndef rps_move():\n  return "R"\n\n\n'
       : code_map[[game_name]]
   );
   const [name, setName] = useState("");

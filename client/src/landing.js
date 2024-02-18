@@ -77,8 +77,9 @@ function LandingPage() {
             rows={leaderboards[currentLeaderboardIndex].rows}
             game={leaderboards[currentLeaderboardIndex].game}
           />
+          <Box display='grid' justifyContent='center'>
           <Stack direction="row">
-            <div>
+            
               <Button
                 startIcon={<ArrowBackIosIcon />}
                 onClick={previousLeaderboard}
@@ -91,8 +92,9 @@ function LandingPage() {
               >
                 Next
               </Button>
-            </div>
+            
           </Stack>
+          </Box>
         </div>
       </div>
     </Box>

@@ -37,9 +37,11 @@ export default function Leaderboard({ game }) {
 
   return (
     <Box paddingBottom={1}>
+      <Box display='grid' justifyContent='center'>
       <Typography variant="h4">
         {"Top " + reverseMap[game] + " bots"}
       </Typography>
+      </Box>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
