@@ -10,16 +10,14 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { code_map } from "./Constants";
+import { code_map } from "./StarterCode";
 import axios from "axios";
 import "./CodeSubmit.css";
 import { useNavigate } from "react-router-dom";
 function CodeSubmit({ game_name }) {
   console.log(game_name);
   const [userCode, setUserCode] = useState(
-    game_name == "rockpaperscissors"
-      ? '# Write the best algorithm for rock, paper, scissors!\ndef rps_move():\n  return "R"\n\n\n'
-      : code_map[[game_name]]
+    code_map[[game_name]]
   );
   const [name, setName] = useState("");
 
