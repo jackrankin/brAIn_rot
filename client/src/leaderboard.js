@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,12 +8,38 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
+import axios from "axios";
 
-export default function Leaderboard( { rows, game } ) {
+const reverseMap = {
+  rockpaperscissors: "Rock, Paper, Scissors!",
+  connect4: "Connect4",
+  tron: "Tron",
+  filler: "Filler",
+};
+
+export default function Leaderboard({ game }) {
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  useEffect(() => {
+    const getGame = () => {
+      axios.get("http://127.0.0.1:5000/leaderboard/" + game).then((res) => {
+        setLeaderboardData(
+          Object.entries(res.data).map(([name, value]) => ({
+            name,
+            value,
+          }))
+        );
+        console.log(leaderboardData);
+      });
+    };
+
+    getGame();
+  }, [game]);
 
   return (
     <div>
-      <Typography variant="h4">{"Top Bots on FunbrAIn"}</Typography>
+      <Typography variant="h4">
+        {"Top " + reverseMap[game] + " bots"}
+      </Typography>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -24,17 +51,12 @@ export default function Leaderboard( { rows, game } ) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
+            {leaderboardData.map((element, index) => (
+              <TableRow key={index}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {index + 1}
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.value}
-                </TableCell>
+                <TableCell>{element.value}</TableCell>
               </TableRow>
             ))}
           </TableBody>
