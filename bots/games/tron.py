@@ -53,13 +53,13 @@ class Tron(object):
 		# this will clear the screen 
 		LINE_UP = '\033[1A'
 		LINE_CLEAR = '\x1b[2K'
-		for i in range(20):
+		for i in range(21):
 			print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board:
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
-			print(" ".join(arr))
+			print("".join(arr))
 		print()
 
 	def _json_render(self):
