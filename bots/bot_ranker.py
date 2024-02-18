@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import time
 from collections import defaultdict
+import tracemalloc
 
 import games.filler
 import games.tron
@@ -37,6 +38,11 @@ def get_bot_dict(game):
     return bot_functions
 
 def rank_bot(bot_name, game_name):
+
+	lt = []
+	for i in range(0, 100000):
+		lt.append(i)
+
 	game_bots = get_bot_dict(game_name)
 	bot_wins = defaultdict(int)	
 	rank = len(game_bots) - 1
@@ -52,7 +58,7 @@ def rank_bot(bot_name, game_name):
 			else:
 				bot_wins[opp] += 1
 
-	ranking = sorted(bot_wins.keys(), key = lambda x : bot_wins[x])
+	ranking = sorted(bot_wins.keys(), key = lambda x : -bot_wins[x])
 	for i in range(len(ranking)):
 		if ranking[i] == bot_name:
 			rank = i
