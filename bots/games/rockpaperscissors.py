@@ -10,6 +10,7 @@ class RPS(object):
 		self.render = render
 		self.map = {'R' : '🪨', 'S' : '✂️', 'P' : '📄'}
 		self.winner = 0
+		self.moves = []
 		for i in range(4):print()
 		self.init_game()
 
@@ -47,13 +48,15 @@ class RPS(object):
 			else:
 				self.score2 += 1
 
+	def _json_render(self):
+		self.moves.append(str(self.map[self.last1]) + " VS " + str(self.map[self.last2]) + "\n" + str(self.score1) + " TO " + str(self.score2) + "\n")
+
 	def _render(self):
 		# clears the last result
 		LINE_UP = '\033[1A'
 		LINE_CLEAR = '\x1b[2K'
 		for i in range(4):
 			print(LINE_UP, end=LINE_CLEAR)
-
 		print(self.map[self.last1], " VS ", self.map[self.last2])
 		print("SCOREBOARD: ")
 		print("P1:", self.score1)
@@ -65,9 +68,10 @@ class RPS(object):
 			if self.render:
 				time.sleep(1)
 				self._render()
+			else:
+				self._json_render()
 	
 		if self.score1 == 1000:
 			self.winner = 1
 		else:
 			self.winner = 2
-
