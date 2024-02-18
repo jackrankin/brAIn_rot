@@ -6,12 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
 import CodeSubmit from "./CodeSubmit";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, points, time, memory) {
+  return { name, points, time, memory };
 }
 
 const rows = [
@@ -25,7 +25,9 @@ export default function Leaderboard() {
 
   return (
     <div>
-      <Typography variant="h4">{"Top Bots on FunbrAIn"}</Typography>
+      <Typography variant="h2" style={{ marginBottom: "20px" }}>
+        {"Top bots for " + (routeParams ? routeParams.name : "")}
+      </Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -37,23 +39,20 @@ export default function Leaderboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
+            {rows.map((row, index) => (
+              <TableRow key={index}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {index + 1}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.points}</TableCell>
+                <TableCell align="right">{row.time}</TableCell>
+                <TableCell align="right">{row.memory}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <CodeSubmit game_name={"connect4"} />
     </div>
   );
 }
