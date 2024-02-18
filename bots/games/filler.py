@@ -58,13 +58,17 @@ class Filler(object):
 	def _play_move(self):
 		color = None
 		if self.turn == 1:
-			while color == None or color == self.p2c:
-				color = self.p1(self.board, 1)
+			color = self.p1(self.board, 1)
+			if color == self.p2c:
+				self.winner = 2
+				return
 			self.p1c = color
 			self._update_board(self.p1set, color)
 		else:
-			while color == None or color == self.p1c:
-				color = self.p2(self.board, 2)
+			color = self.p2(self.board, 2)
+			if color == self.p1c:
+				self.winner = 1
+				return
 			self.p2c = color
 			self._update_board(self.p2set, color)
 		self.turn = 3 - self.turn 
@@ -104,7 +108,7 @@ class Filler(object):
 				time.sleep(0.3)
 			else:
 				self._json_render()
-			win = self._detect_win()
+			win = self._detect_win() | self.winner
 		if win == 1:
 			self.winner = 1
 			if self.render: print(self.color_map[self.p1c], "WINS")

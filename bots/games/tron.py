@@ -63,7 +63,7 @@ class Tron(object):
 		print()
 
 	def _json_render(self):
-		b = []
+		b = [	]
 		for i in self.board:
 			arr = []
 			for color in i:

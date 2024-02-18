@@ -25,6 +25,10 @@ class RPS(object):
 		ans2 = self.p2()
 		self.last1 = ans1
 		self.last2 = ans2
+		if ans1 not in ['R', 'P', 'S']:
+			self.score2 += 1
+		if ans2 not in ['R', 'P', 'S']:
+			self.score1 += 1
 		if ans1 == 'R' and ans2 == 'P':
 			self.score2 += 1
 		elif ans1 == 'P' and ans2 == 'S':
