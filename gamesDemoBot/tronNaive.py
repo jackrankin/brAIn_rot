@@ -1,6 +1,6 @@
 import random
 
-def next_move(board, row, col):
+def next_move(board, row1, col1, row2, col2):
     #0, 1, 2, or 3
     #right, down, left, and up
     dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
@@ -8,8 +8,8 @@ def next_move(board, row, col):
 
     # Check each direction
     for direction in dirs:
-        new_row = row + direction[0]
-        new_col = col + direction[1]
+        new_row = row1 + direction[0]
+        new_col = col1 + direction[1]
 
         # Check if the new position is within the board boundaries and is a free space
         if 0 <= new_row < len(board) and 0 <= new_col < len(board[0]) and board[new_row][new_col] == 0:
