@@ -1,4 +1,4 @@
 import numpy as np
 
-def random_agent():
+def next_move():
 	return np.random.choice(['P', 'S'])
