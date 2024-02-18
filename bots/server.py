@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from bot_ranker import play_two, get_leaderboard
 
 app = Flask(__name__)

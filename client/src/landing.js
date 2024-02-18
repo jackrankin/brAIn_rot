@@ -3,6 +3,7 @@ import GameCard from "./GameCard";
 import { Box, Typography } from "@mui/material";
 import Leaderboard from "./leaderboard.js";
 import "./landing.css"; // Import the CSS file
+import GameView from "./GameView.js";
 
 function LandingPage() {
   return (
@@ -22,6 +23,7 @@ function LandingPage() {
         </div>
         <div className="leaderboardContainer">
           <Leaderboard />
+          <GameView game_name={'filler'} player1={'filler_random'} player2={'filler_random'} />
         </div>
       </div>
     </Box>
