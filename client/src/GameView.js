@@ -29,6 +29,7 @@ function GameView( { game_name, player1, player2 } ) {
             {fullGame.map((line, i) => (
                 <Typography fontSize='xx-large' key={i}>{line}</Typography>
             ))}
+            {winner}
         </Box>
 	);
 }
