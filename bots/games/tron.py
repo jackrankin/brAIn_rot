@@ -17,8 +17,7 @@ class Tron(object):
 		self.board[9][18] = 2
 		self.render = render
 		self.winner = 0
-		self.move_counter = 0
-		self.moves = {}
+		self.moves = []
 		self.init_game()
 
 	def _detect_loss(self):
@@ -69,8 +68,7 @@ class Tron(object):
 				arr.append(self.color_map[color])
 			b.append(arr[:])
 
-		self.moves[str(self.move_counter)] = b
-		self.move_counter += 1
+		self.moves.append(b)
 
 	def init_game(self):
 		loss = 0

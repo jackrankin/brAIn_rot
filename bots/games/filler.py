@@ -22,9 +22,7 @@ class Filler(object):
 			for i in range(8):print()
 		self.winner = 0
 
-		self.moves = {}
-		self.move_counter = 0
-
+		self.moves = []
 		self.init_game()
 
 	def _detect_win(self):
@@ -95,8 +93,7 @@ class Filler(object):
 				arr.append(self.color_map[color])
 			b.append(arr[:])
 
-		self.moves[str(self.move_counter)] = b
-		self.move_counter += 1
+		self.moves.append(b)
 
 	def init_game(self):
 		win = 0

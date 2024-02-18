@@ -10,8 +10,7 @@ class Connect4(object):
 		self.turn = 1
 		self.render = render
 		self.winner = 0
-		self.moves = {}
-		self.move_counter = 0
+		self.moves = []
 		self.init_game()
 		
 
@@ -92,8 +91,7 @@ class Connect4(object):
 				else:
 					arr.append("⚪️")
 			b.append(arr[:])
-		self.moves[str(self.move_counter)] = b
-		self.move_counter += 1
+		self.moves.append(b)
 
 	def init_game(self):
 		win = 0
