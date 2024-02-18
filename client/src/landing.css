@@ -1,14 +1,20 @@
-.cardContainer {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Adjust the min and max width as needed */
-  gap: 20px; /* Adjust the gap between cards */
-  padding: 20px; /* Optional padding around the grid */
-  width: 100%; /* Ensure the grid container spans the full width of its parent */
+.landingPage {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.cardContainer .card {
-  width: 100%;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.leaderboardContainer {
+  width: 30%;
 }
