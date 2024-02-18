@@ -16,6 +16,9 @@ class Tron(object):
 		self.board[9][2] = 1
 		self.board[9][18] = 2
 		self.render = render
+		if render:
+			for i in range(20):
+				print()
 		self.winner = 0
 		self.moves = []
 		self.init_game()
@@ -49,10 +52,10 @@ class Tron(object):
 
 	def _render(self):
 		# this will clear the screen 
-		# LINE_UP = '\033[1A'
-		# LINE_CLEAR = '\x1b[2K'
-		# for i in range(20):
-			# print(LINE_UP, end=LINE_CLEAR)
+		LINE_UP = '\033[1A'
+		LINE_CLEAR = '\x1b[2K'
+		for i in range(20):
+			print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board:
 			arr = []
 			for color in i:
@@ -75,7 +78,7 @@ class Tron(object):
 		while not loss:
 			loss = self._play_move()
 			if self.render:
-				# time.sleep(1)
+				time.sleep(0.5)
 				self._render()
 			else:
 				self._json_render()

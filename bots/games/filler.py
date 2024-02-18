@@ -19,7 +19,7 @@ class Filler(object):
 		self.p2c = self.board[7][0]
 		self.render = render
 		if render:
-			for i in range(8):print()
+			for i in range(9):print()
 		self.winner = 0
 
 		self.moves = []
@@ -73,10 +73,10 @@ class Filler(object):
 	def _render(self):
 
 		# this will clear the screen 
-		# LINE_UP = '\033[1A'
-		# LINE_CLEAR = '\x1b[2K'
-		# for i in range(8):
-			# print(LINE_UP, end=LINE_CLEAR)
+		LINE_UP = '\033[1A'
+		LINE_CLEAR = '\x1b[2K'
+		for i in range(9):
+			print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board:
 			arr = []
 			for color in i:
@@ -101,6 +101,7 @@ class Filler(object):
 			self._play_move()
 			if self.render: 
 				self._render()
+				time.sleep(0.3)
 			else:
 				self._json_render()
 			win = self._detect_win()

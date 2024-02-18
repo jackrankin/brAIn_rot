@@ -5,7 +5,6 @@ import { python } from "@codemirror/lang-python";
 import {
   Box,
   Button,
-  Dialog,
   DialogContent,
   DialogContentText,
   Stack,
@@ -18,26 +17,16 @@ function CodeSubmit({ game_name }) {
   const [userCode, setUserCode] = useState(code_map[game_name]);
   const [name, setName] = useState("");
 
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const onChange = (value) => {
     setUserCode(value);
   };
 
   const submitCode = () => {
     axios
-      .post('http://127.0.0.1:5000/submit_code', {
-        'code': userCode,
-        'game': game_name,
-        'name': name,
+      .post('http://localhost:80/submit_code', {
+        code: userCode,
+        game: game_name,
+        name: name,
       })
       .then((res) => {
         console.log(res);
@@ -46,8 +35,6 @@ function CodeSubmit({ game_name }) {
 
   return (
     <Box display="grid" justifyContent="center" padding={2}>
-      <Button onClick={handleClickOpen}>MAKE YOUR OWN BOT!!!!!!</Button>
-      <Dialog open={open} onClose={handleClose}>
         <Box padding={2} display="grid" justifyContent="center">
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
@@ -71,7 +58,6 @@ function CodeSubmit({ game_name }) {
             </Stack>
           </DialogContent>
         </Box>
-      </Dialog>
     </Box>
   );
 }

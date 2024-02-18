@@ -9,6 +9,8 @@ class Connect4(object):
 		self.board = [[0] * 7 for _ in range(6)]
 		self.turn = 1
 		self.render = render
+		if render:
+			for i in range(7): print()
 		self.winner = 0
 		self.moves = []
 		self.init_game()
@@ -61,10 +63,10 @@ class Connect4(object):
 
 	def _render(self):
 		# clears teh lines
-		# LINE_UP = '\033[1A'
-		# LINE_CLEAR = '\x1b[2K'
-		# for i in range(6):
-			# print(LINE_UP, end=LINE_CLEAR)
+		LINE_UP = '\033[1A'
+		LINE_CLEAR = '\x1b[2K'
+		for i in range(7):
+			print(LINE_UP, end=LINE_CLEAR)
 		for i in self.board[::-1]:
 			arr = []
 			for char in i:
@@ -99,12 +101,15 @@ class Connect4(object):
 			self._play_move()
 			if self.render:
 				self._render()
+				time.sleep(0.5)
 			else:
 				self._json_render()
 			win = self._detect_win()
 
 		if win == 1:
+			print("🔵 WINS")
 			self.winner = 1
 		elif win == 2:
+			print("🔴 WINS")
 			self.winner = 2
 

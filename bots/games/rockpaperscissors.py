@@ -1,13 +1,16 @@
 import numpy as np
 import time
 
-class RPS:
-	def __init__(self, player1, player2):
+class RPS(object):
+	def __init__(self, player1, player2, render):
 		self.p1 = player1
 		self.p2 = player2
 		self.score1 = 0
 		self.score2 = 0
+		self.render = render
 		self.map = {'R' : '🪨', 'S' : '✂️', 'P' : '📄'}
+		self.winner = 0
+		for i in range(4):print()
 		self.init_game()
 
 	def _detect_win(self):
@@ -34,6 +37,11 @@ class RPS:
 			self.score1 += 1
 		elif ans2 == 'S' and ans1 == 'R':
 			self.score1 += 1
+		else:
+			if np.random.choice([0,1]):
+				self.score1 += 1
+			else:
+				self.score2 += 1
 
 	def _render(self):
 		# clears the last result
@@ -49,14 +57,13 @@ class RPS:
 
 	def init_game(self):
 		while not self._detect_win():
-			# time.sleep(1)
 			self._play_move()
-			self._render()
+			if self.render:
+				time.sleep(1)
+				self._render()
+	
+		if self.score1 == 1000:
+			self.winner = 1
+		else:
+			self.winner = 2
 
-def random_agent():
-	return np.random.choice(['R', 'P', 'S'])
-
-# you pass in two agents that both take in the game array and 
-# make a move assuming that it is their turn.
-for i in range(4): print()
-RPS(random_agent, random_agent)
