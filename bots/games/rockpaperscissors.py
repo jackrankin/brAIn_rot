@@ -10,6 +10,7 @@ class RPS(object):
 		self.render = render
 		self.map = {'R' : '🪨', 'S' : '✂️', 'P' : '📄'}
 		self.winner = 0
+		for i in range(4):print()
 		self.init_game()
 
 	def _detect_win(self):
