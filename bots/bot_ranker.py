@@ -81,7 +81,7 @@ def get_leaderboard(game_name):
 			else:
 				bot_wins[opp] += 1
 
-	ranks = sorted(bot_wins.keys(), key = lambda x : bot_wins[x])
+	ranks = sorted(bot_wins.keys(), key = lambda x : -bot_wins[x])
 	for i in range(len(ranks)):
 		ranking[str(i)] = str(ranks[i])
 	return ranking
@@ -126,7 +126,7 @@ def play_two_console(your_bot="connect4_random", opp_bot="connect4_random", game
 			opp_bot = getattr(opp, func_name)
 	
 	result = games_dictionary[game_name](opp_bot, your_bot, True)
-
+	print(result)
 	game = {
 		'moves' : result.moves,	
 		'winner' : result.winner,
