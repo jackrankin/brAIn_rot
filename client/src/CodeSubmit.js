@@ -15,7 +15,12 @@ import axios from "axios";
 import "./CodeSubmit.css";
 import { useNavigate } from "react-router-dom";
 function CodeSubmit({ game_name }) {
-  const [userCode, setUserCode] = useState(code_map[game_name]);
+  console.log(game_name);
+  const [userCode, setUserCode] = useState(
+    game_name == "rockpaperscissors"
+      ? 'def rps_move():\n  return "R"\n\n\n\n\n\n\n\n\n'
+      : code_map[[game_name]]
+  );
   const [name, setName] = useState("");
 
   let navigate = useNavigate();
