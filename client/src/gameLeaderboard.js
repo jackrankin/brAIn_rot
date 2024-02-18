@@ -29,6 +29,13 @@ const reverseMap = {
   filler: "Filler",
 };
 
+const linkMap = {
+  "Rock, Paper, Scissors!": "rockpaperscissors",
+  Connect4: "connect4",
+  Tron: "tron",
+  Filler: "filler",
+};
+
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const routeParams = useParams();
@@ -55,7 +62,7 @@ export default function Leaderboard() {
     const getGame = () => {
       axios
         .get(
-          "http://127.0.0.1:5000/leaderboard/" + routeParams.name.toLowerCase()
+          "http://127.0.0.1:5000/leaderboard/" + linkMap[routeParams.name]
         )
         .then((res) => {
           setLeaderboardData(
@@ -113,6 +120,19 @@ export default function Leaderboard() {
             <CodeSubmit game_name={routeParams.name.toLowerCase()} />
           </TabPanel>
           <TabPanel value="2">
+            {showGame ?
+            <div>
+            <Box display='grid' justifyContent='center' padding={1}>
+            <Button variant="contained" onClick={() => { setShowGame(false) }}>New Battle</Button>
+            </Box>
+            <GameView
+              game_name={linkMap[routeParams.name]}
+              player1={bot1}
+              player2={bot2}
+            /> 
+            </div>
+            : 
+            <div>
             <Typography style={{ padding: 5 }}>
               Pick the bots you'd like to battle
             </Typography>
@@ -147,24 +167,11 @@ export default function Leaderboard() {
                 ))}
               </Select>
             </FormControl>
-            {showGame ?
-            <GameView
-              game_name={routeParams.name}
-              player1={bot1}
-              player2={bot2}
-            /> : 
             <Box display='grid' justifyContent='center' padding={1}>
-            <Button
-              variant="contained"
-              id="StartButton"
-              onClick={() => {
-                setShowGame(true);
-              }}
-              disabled={!bot1 || !bot2}
-            >
-              Start Bot Battle
-            </Button>
-          </Box>}
+            <Button variant="contained" onClick={() => { setShowGame(true) }} disabled={!bot1 || !bot2}>Start Battle</Button>
+            </Box>
+            </div>
+            }
           </TabPanel>
         </TabContext>
         </Box>
