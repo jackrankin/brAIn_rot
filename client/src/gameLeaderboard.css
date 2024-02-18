@@ -1,13 +1,34 @@
-#leaderBoardTable {
+.container {
   display: flex;
-  justify-content: center; /* horizontally center the content */
+  margin: 20px;
 }
 
-#leaderBoardTable > * {
-  flex: 1; /* each child takes up equal space */
-  margin-right: 10px;
+#leaderBoardTable {
+  margin-right: 20px;
+  width: 30%;
 }
 
-#leaderBoardTable .MuiPaper-root {
-  width: 75%; /* ensure the table takes full width */
+#codeSubmit {
+  width: 70%;
+  padding: 20;
+}
+
+#codeSubmit h3 {
+  margin-top: 0;
+  background-color: #5a5a5a;
+  border: 1px solid #5a5a5a;
+}
+
+#codeSubmit button {
+  margin-top: 10px;
+}
+
+@media (max-width: 100%) {
+  .container {
+    flex-direction: column;
+  }
+  #leaderBoardTable {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }

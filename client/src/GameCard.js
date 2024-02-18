@@ -12,16 +12,22 @@ import Leaderboard from "./leaderboard.js";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
-  'Connect4': c4GIF,
-  'Tron': TronIMG,
-  'Filler': FILLERGIF,
-  'Rock, Paper, Scissors!': RPGIF,
+  Connect4: c4GIF,
+  Tron: TronIMG,
+  Filler: FILLERGIF,
+  "Rock, Paper, Scissors!": RPGIF,
 };
 const descriptionMap = {
-  'Connect4': "THIS IS CONNECT FOUR IT IS FUN",
-  'Tron': "THIS IS TRON IT IS A FUN GAME",
-  'Filler': "FILLLLLLLER",
-  'Rock, Paper, Scissors!': "ROCK, OR PAPER, or scissors",
+  Connect4: "THIS IS CONNECT FOUR IT IS FUN",
+  Tron: "THIS IS TRON IT IS A FUN GAME",
+  Filler: "FILLLLLLLER",
+  "Rock, Paper, Scissors!": "ROCK, OR PAPER, or scissors",
+};
+const linkMap = {
+  "Rock, Paper, Scissors!": "rockpaperscissors",
+  Connect4: "connect4",
+  Tron: "tron",
+  Filler: "filler",
 };
 
 const leaderBoardMap = {
@@ -34,7 +40,7 @@ export default function GameCard({ game_name }) {
   let navigate = useNavigate();
 
   return (
-    <Card onClick={() => navigate("/Leaderboard/"+game_name)}>
+    <Card onClick={() => navigate("/Leaderboard/" + linkMap[game_name])}>
       <CardActionArea>
         <CardMedia
           component="img"
