@@ -7,21 +7,22 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CodeSubmit from "./CodeSubmit";
 import axios from "axios";
 import "./gameLeaderboard.css";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import SportsMmaIcon from "@mui/icons-material/SportsMma";
+import GameView from "./GameView.js";
 
 function createData(name, points, time, memory) {
   return { name, points, time, memory };
 }
 
-const rows = [
-  createData("Drew Bot", 1, 100, 24),
-  createData("Chaitra Bot", 50, 9.0, 37),
-  createData("Jack Bot", 3, 25, 24),
-];
 const reverseMap = {
   rockpaperscissors: "Rock, Paper, Scissors!",
   connect4: "Connect4",
@@ -32,7 +33,17 @@ const reverseMap = {
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const routeParams = useParams();
+  const [bot1, setbot1] = React.useState("");
+  const [codeMode, setCodeMode] = React.useState(true);
+  const handleChange1 = (event) => {
+    setbot1(event.target.value);
+  };
 
+  const [bot2, setbot2] = React.useState("");
+
+  const handleChange2 = (event) => {
+    setbot2(event.target.value);
+  };
   useEffect(() => {
     const getGame = () => {
       axios
@@ -80,10 +91,69 @@ export default function Leaderboard() {
               </TableBody>
             </Table>
           </TableContainer>
+          <Typography style={{ padding: 5 }}>
+            Pick the bots you'd like to battle
+          </Typography>
+          <FormControl fullWidth style={{}}>
+            <InputLabel id="demo-simple-select-label">Bot Number 1</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={bot1}
+              label="Bot Number 1"
+              onChange={handleChange1}
+            >
+              {leaderboardData.map((element, index) => (
+                <MenuItem value={element.value}>{element.value}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Box display="grid" justifyContent="center">
+            <SportsMmaIcon size="xx-large" />
+          </Box>
+          <FormControl fullWidth style={{}}>
+            <InputLabel id="demo-simple-select-label">Bot Number 2</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={bot2}
+              label="Bot Number 2"
+              onChange={handleChange2}
+            >
+              {leaderboardData.map((element, index) => (
+                <MenuItem value={element.value}>{element.value}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button
+            id="StartButton"
+            onClick={() => {
+              setCodeMode(!codeMode);
+            }}
+          >
+            Start Bot Battle
+          </Button>
         </div>
-        <div id="codeSubmit">
-          <CodeSubmit game_name={routeParams.name.toLowerCase()} />
-        </div>
+        {codeMode ? (
+          <div id="codeSubmit">
+            <CodeSubmit game_name={routeParams.name.toLowerCase()} />
+          </div>
+        ) : (
+          <div>
+            <GameView
+              game_name={routeParams.name}
+              player1={bot1}
+              player2={bot2}
+            />
+          </div>
+        )}
+        <Button
+          onClick={() => {
+            setCodeMode(!codeMode);
+          }}
+        >
+          Toggle Code View
+        </Button>
       </div>
     </div>
   );
