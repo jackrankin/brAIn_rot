@@ -17,7 +17,7 @@ class Tron(object):
 		self.board[9][18] = 2
 		self.render = render
 		if render:
-			for i in range(20):
+			for i in range(21):
 				print()
 		self.winner = 0
 		self.moves = []
@@ -47,7 +47,6 @@ class Tron(object):
 			self.p1trail.add((self.p1c[0], self.p1c[1]))
 			self.board[self.p2c[0]][self.p2c[1]] = 2
 			self.p2trail.add((self.p2c[0], self.p2c[1]))
-
 		return loss 
 
 	def _render(self):
