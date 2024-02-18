@@ -59,14 +59,14 @@ class Filler(object):
 		color = None
 		if self.turn == 1:
 			color = self.p1(self.board, 1)
-			if color == self.p2c:
+			if color == self.p2c or color < 1 or color > 8:
 				self.winner = 2
 				return
 			self.p1c = color
 			self._update_board(self.p1set, color)
 		else:
 			color = self.p2(self.board, 2)
-			if color == self.p1c:
+			if color == self.p1c or color < 1 or color > 8:
 				self.winner = 1
 				return
 			self.p2c = color

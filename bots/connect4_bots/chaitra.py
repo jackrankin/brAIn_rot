@@ -8,5 +8,5 @@ def next_move(board):
 		if s:
 			poss.append(i)
 	if not poss:
-		return -1
+		return 0
 	return np.random.choice(poss)

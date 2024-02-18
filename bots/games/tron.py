@@ -40,7 +40,12 @@ class Tron(object):
 		self.p1c[1] += self.dirs[move1][1]
 		self.p2c[0] += self.dirs[move2][0]
 		self.p2c[1] += self.dirs[move2][1]
-
+		if move1 < 0 or move1 > 3:
+			self.winner = 2
+			return 
+		if move2 < 0 or move2 > 3:
+			self.winner = 1
+			return 
 		loss = self._detect_loss()
 		if not loss:
 			self.board[self.p1c[0]][self.p1c[1]] = 1
@@ -74,7 +79,7 @@ class Tron(object):
 
 	def init_game(self):
 		loss = 0
-		while not loss:
+		while not loss and not self.winner:
 			loss = self._play_move()
 			if self.render:
 				time.sleep(0.5)
