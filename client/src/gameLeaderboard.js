@@ -33,7 +33,13 @@ export default function Leaderboard() {
           "http://127.0.0.1:5000/leaderboard/" + routeParams.name.toLowerCase()
         )
         .then((res) => {
-          console.log(res.data);
+          setLeaderboardData(
+            Object.entries(res.data).map(([name, value]) => ({
+              name,
+              value,
+            }))
+          );
+          console.log(leaderboardData);
         });
     };
 
@@ -50,20 +56,18 @@ export default function Leaderboard() {
           <TableHead>
             <TableRow>
               <TableCell>Rank</TableCell>
-              <TableCell align="right">Points</TableCell>
+              <TableCell align="right">Bot Name</TableCell>
               <TableCell align="right">Time(s)</TableCell>
               <TableCell align="right">Memory(mb)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, index) => (
+            {leaderboardData.map((element, index) => (
               <TableRow key={index}>
                 <TableCell component="th" scope="row">
                   {index + 1}
                 </TableCell>
-                <TableCell align="right">{row.points}</TableCell>
-                <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right">{row.memory}</TableCell>
+                <TableCell align="right">{element.value}</TableCell>
               </TableRow>
             ))}
           </TableBody>
