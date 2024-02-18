@@ -8,9 +8,11 @@ import axios from "axios";
 import "./App.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Rick from "./rick.js";
 
 function LandingPage() {
   const [currentLeaderboardIndex, setCurrentLeaderboardIndex] = useState(0);
+  const [nextCount, setNextCount] = useState(0);
 
   const leaderboards = [
     {
@@ -51,12 +53,18 @@ function LandingPage() {
     if (currentLeaderboardIndex > 0) {
       setCurrentLeaderboardIndex(currentLeaderboardIndex - 1);
     }
+    if(nextCount - 1 > 0){
+      setNextCount(nextCount - 1);
+    }
+    
   };
 
   const nextLeaderboard = () => {
     if (currentLeaderboardIndex < leaderboards.length - 1) {
       setCurrentLeaderboardIndex(currentLeaderboardIndex + 1);
     }
+    setNextCount(nextCount + 1);
+    
   };
   return (
     <Box padding={2} className="landingPage">
@@ -64,6 +72,7 @@ function LandingPage() {
         <Typography variant="h3" color="black">
           brAIn🧠rot
         </Typography>
+        {nextCount == 10 ? <Rick/> : <></>}
       </Box>
       <div className="container">
         <div className="cardContainer">
