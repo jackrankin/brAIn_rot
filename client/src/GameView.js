@@ -29,9 +29,9 @@ function GameView({ game_name, player1, player2 }) {
         .then((res) => {
           console.log(res);
           setFullGame(res.data.moves);
-          if (res.data.winner == 1) {
+          if (res.data.winner == 2) {
             setWinner(player1);
-          } else if (res.data.winner == 2) {
+          } else if (res.data.winner == 1) {
             setWinner(player2);
           }
           console.log(res.data.moves[0]);
@@ -44,7 +44,7 @@ function GameView({ game_name, player1, player2 }) {
   return (
     <Box display="grid" justifyContent="center" padding={2}>
       <Box display="grid" justifyContent="center">
-        <Typography variant="h4">{player1 + " vs " + player2}</Typography>
+        <Typography variant="h4">{player2 + " vs " + player1}</Typography>
       </Box>
       {game_name === "Rock, Paper, Scissors!" ? fullGame[moveNumber] : <></>}
       <Box display="grid" justifyContent="center">
