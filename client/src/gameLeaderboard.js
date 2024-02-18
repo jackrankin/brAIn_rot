@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CodeSubmit from "./CodeSubmit";
+import axios from "axios";
 
 function createData(name, points, time, memory) {
   return { name, points, time, memory };
@@ -21,7 +23,22 @@ const rows = [
 ];
 
 export default function Leaderboard() {
-  let routeParams = useParams();
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  const routeParams = useParams();
+
+  useEffect(() => {
+    const getGame = () => {
+      axios
+        .get(
+          "http://127.0.0.1:5000/leaderboard/" + routeParams.name.toLowerCase()
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
+    };
+
+    getGame();
+  }, [routeParams.name]);
 
   return (
     <div>

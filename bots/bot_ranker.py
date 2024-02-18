@@ -76,7 +76,7 @@ def get_leaderboard(game_name):
 	ranks = sorted(bot_wins.keys(), key = lambda x : bot_wins[x])
 	for i in range(len(ranks)):
 		ranking[str(i)] = str(ranks[i])
-
+	print(ranking)
 	return ranking
 
 def play_two(your_bot="connect4_random", opp_bot="connect4_random", game_name="connect4"):
