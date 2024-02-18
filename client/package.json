@@ -7,6 +7,7 @@
     "@codemirror/lang-python": "^6.1.4",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -60,7 +60,7 @@ class Tron(object):
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
-			print("".join(arr))
+			print(" ".join(arr))
 		print()
 
 	def _json_render(self):

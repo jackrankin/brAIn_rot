@@ -91,7 +91,7 @@ class Filler(object):
 			arr = []
 			for color in i:
 				arr.append(self.color_map[color])
-			b.append("".join(arr))
+			b.append(" ".join(arr))
 
 		self.moves.append("\n".join(b))
 

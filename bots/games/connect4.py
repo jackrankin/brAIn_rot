@@ -91,7 +91,7 @@ class Connect4(object):
 					arr.append("🔵")
 				else:
 					arr.append("⚪️")
-			b.append("".join(arr))
+			b.append(" ".join(arr))
 
 		self.moves.append("\n".join(b))
 

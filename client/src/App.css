@@ -1,3 +1,8 @@
 .App {
   text-align: center;
 }
+
+.board {
+  white-space: pre-wrap;
+  font-size: xx-large;
+}
