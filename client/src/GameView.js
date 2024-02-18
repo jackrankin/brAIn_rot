@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 
 function GameView( { game_name, player1, player2 } ) {
@@ -26,9 +26,11 @@ function GameView( { game_name, player1, player2 } ) {
 	return (
         <Box display='grid' justifyContent='center' padding={2}>
             {game_name + ': ' + player1 + ' vs ' + player2}
-            {fullGame.map((line, i) => (
-                <Typography fontSize='xx-large' key={i}>{line}</Typography>
-            ))}
+            <Stack>
+                {fullGame.map((line, i) => (
+                   <p key={i}>{line}</p> 
+                ))}
+            </Stack>
             {winner}
         </Box>
 	);

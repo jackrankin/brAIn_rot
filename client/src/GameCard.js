@@ -8,6 +8,7 @@ import Connect4Image from "./gameImages/c4.png";
 import TronIMG from "./gameImages/tron.webp";
 import FillerIMG from "./gameImages/filler.png";
 import RockPaperScissorsIMG from "./gameImages/rp.png";
+import RPGIF from "./gameImages/rp.gif";
 import Leaderboard from "./leaderboard.js";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +16,7 @@ const imageMap = {
   'Connect4': Connect4Image,
   'Tron': TronIMG,
   'Filler': FillerIMG,
-  'Rock, Paper, Scissors!': RockPaperScissorsIMG,
+  'Rock, Paper, Scissors!': RPGIF,
 };
 const descriptionMap = {
   'Connect4': "THIS IS CONNECT FOUR IT IS FUN",
