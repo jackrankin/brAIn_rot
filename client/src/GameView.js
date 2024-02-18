@@ -43,7 +43,9 @@ function GameView({ game_name, player1, player2 }) {
 
   return (
     <Box display="grid" justifyContent="center" padding={2}>
-      <Typography variant="h4">{player1 + " vs " + player2}</Typography>
+      <Box display="grid" justifyContent="center">
+        <Typography variant="h4">{player1 + " vs " + player2}</Typography>
+      </Box>
       {game_name === "Rock, Paper, Scissors!" ? fullGame[moveNumber] : <></>}
       <Box display="grid" justifyContent="center">
         {currBoard.map((str) => (
