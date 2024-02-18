@@ -53,12 +53,10 @@ class RPS:
 			self._play_move()
 			self._render()
 
-# def random_agent():
-# 	return np.random.choice(['R', 'P', 'S'])
+def random_agent():
+	return np.random.choice(['R', 'P', 'S'])
 
 # you pass in two agents that both take in the game array and 
 # make a move assuming that it is their turn.
-# for i in range(4): print()
-# RPS(random_agent, random_agent)
-def random_agent():
-  return 'R'
+for i in range(4): print()
+RPS(random_agent, random_agent)

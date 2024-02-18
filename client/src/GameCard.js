@@ -4,24 +4,24 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Connect4Image from "../gameImages/c4.png";
-import TronIMG from "../gameImages/tron.webp";
-import FillerIMG from "../gameImages/filler.png";
-import RockPaperScissorsIMG from "../gameImages/rp.png";
-import Leaderboard from "../leaderboard.js";
+import Connect4Image from "./gameImages/c4.png";
+import TronIMG from "./gameImages/tron.webp";
+import FillerIMG from "./gameImages/filler.png";
+import RockPaperScissorsIMG from "./gameImages/rp.png";
+import Leaderboard from "./leaderboard.js";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
-  Connect4: Connect4Image,
-  Tron: TronIMG,
-  Filler: FillerIMG,
-  RockPaperScissors: RockPaperScissorsIMG,
+  'Connect4': Connect4Image,
+  'Tron': TronIMG,
+  'Filler': FillerIMG,
+  'Rock, Paper, Scissors!': RockPaperScissorsIMG,
 };
 const descriptionMap = {
-  Connect4: "THIS IS CONNECT FOUR IT IS FUN",
-  Tron: "THIS IS TRON IT IS A FUN GAME",
-  Filler: "FILLLLLLLER",
-  RockPaperScissors: "ROCK, OR PAPER, or scissors",
+  'Connect4': "THIS IS CONNECT FOUR IT IS FUN",
+  'Tron': "THIS IS TRON IT IS A FUN GAME",
+  'Filler': "FILLLLLLLER",
+  'Rock, Paper, Scissors!': "ROCK, OR PAPER, or scissors",
 };
 
 const leaderBoardMap = {
@@ -34,11 +34,10 @@ export default function GameCard({ game_name }) {
   let navigate = useNavigate();
 
   return (
-    <Card sx={{ maxWidth: 500 }} onClick={() => navigate("/Leaderboard")}>
+    <Card onClick={() => navigate("/Leaderboard")}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="250"
           image={imageMap[game_name]}
           alt={game_name}
         />

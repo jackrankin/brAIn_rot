@@ -1,5 +1,5 @@
 import React from "react";
-import GameCard from "./gameCards/GameCard";
+import GameCard from "./GameCard";
 import { Box, Grid, Typography } from "@mui/material";
 import "./landing.css"; // Import the CSS file
 
@@ -23,13 +23,11 @@ const users = [
 ];
 function LandingPage() {
   return (
-    <Box>
-      <Typography variant="h1" component="h2">
-        Leaping Lizards
-      </Typography>
+    <Box padding={2}>
+      <Typography variant="h1">brAIn rot</Typography>
       <div class="cardContainer">
         <GameCard game_name={"Connect4"} />
-        <GameCard game_name={"RockPaperScissors"} />
+        <GameCard game_name={"Rock, Paper, Scissors!"} />
         <GameCard game_name={"Filler"} />
         <GameCard game_name={"Tron"} />
       </div>
