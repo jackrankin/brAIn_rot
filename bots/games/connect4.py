@@ -103,7 +103,7 @@ class Connect4(object):
 
 	def init_game(self):
 		win = 0
-		while not win:
+		while not win and not self.winner:
 			self._play_move()
 			if self.render:
 				self._render()
