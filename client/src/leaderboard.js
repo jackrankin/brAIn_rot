@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import axios from "axios";
 
 const reverseMap = {
@@ -36,7 +36,7 @@ export default function Leaderboard({ game }) {
   }, [game]);
 
   return (
-    <div>
+    <Box paddingBottom={1}>
       <Typography variant="h4">
         {"Top " + reverseMap[game] + " bots"}
       </Typography>
@@ -62,6 +62,6 @@ export default function Leaderboard({ game }) {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Box>
   );
 }

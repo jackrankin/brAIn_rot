@@ -16,9 +16,9 @@ class RPS(object):
 		self.init_game()
 
 	def _detect_win(self):
-		if self.score1 == 2:
+		if self.score1 == 10:
 			return 1
-		elif self.score2 == 2:
+		elif self.score2 == 10:
 			return 2
 		return 0
 
@@ -72,7 +72,7 @@ class RPS(object):
 			else:
 				self._json_render()
 	
-		if self.score1 == 2:
+		if self.score1 == 10:
 			self.winner = 1
 		else:
 			self.winner = 2

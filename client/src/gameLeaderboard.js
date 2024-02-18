@@ -7,8 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Typography, Button, Box, Tab } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Typography, Button, Box, Tab, IconButton } from "@mui/material";
+import { useParams, useNavigate } from "react-router-dom";
 import CodeSubmit from "./CodeSubmit";
 import axios from "axios";
 import "./gameLeaderboard.css";
@@ -21,6 +21,7 @@ import GameView from "./GameView.js";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import HomeIcon from '@mui/icons-material/Home';
 
 const reverseMap = {
   rockpaperscissors: "Rock, Paper, Scissors!",
@@ -29,18 +30,13 @@ const reverseMap = {
   filler: "Filler",
 };
 
-const linkMap = {
-  "Rock, Paper, Scissors!": "rockpaperscissors",
-  Connect4: "connect4",
-  Tron: "tron",
-  Filler: "filler",
-};
-
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
+
   const routeParams = useParams();
+  let navigate = useNavigate();
+
   const [bot1, setbot1] = React.useState("");
-  const [codeMode, setCodeMode] = React.useState(true);
   const [showGame, setShowGame] = useState(false);
 
   const [value, setValue] = React.useState("1");
@@ -78,10 +74,11 @@ export default function Leaderboard() {
 
   return (
     <Box padding={2}>
-      <Box bgcolor="white" padding={2} marginBottom={2}>
+      <Box bgcolor="white" padding={2} marginBottom={2} display='flex' justifyContent='space-between'>
         <Typography variant="h3" color="black">
           {reverseMap[routeParams.name]}
         </Typography>
+        <IconButton onClick={() => { navigate('/'); }} sx={{ color: "#000000" }}><HomeIcon/></IconButton>
       </Box>
       <div className="container">
         <div id="leaderBoardTable">
