@@ -11,7 +11,8 @@ class RPS(object):
 		self.map = {'R' : '🪨', 'S' : '✂️', 'P' : '📄'}
 		self.winner = 0
 		self.moves = []
-		for i in range(4):print()
+		if self.render: 
+			for i in range(4):print()
 		self.init_game()
 
 	def _detect_win(self):
@@ -71,7 +72,7 @@ class RPS(object):
 			else:
 				self._json_render()
 	
-		if self.score1 == 1000:
+		if self.score1 == 2:
 			self.winner = 1
 		else:
 			self.winner = 2
