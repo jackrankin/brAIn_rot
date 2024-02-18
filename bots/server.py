@@ -15,6 +15,15 @@ def leaderboard(game_name):
 	result = get_leaderboard(game_name)
 	return jsonify(result)
 
+@app.route('/get_rank/<game_name>/<bot_name>', methods=['GET'])
+def get_rank(game_name, bot_name):
+	result = get_leaderboard(game_name)
+
+	for key in result:
+		if result[key] == bot_name:
+			return {"rank" : str(key)}
+	return {}
+	
 @app.route('/submit_code', methods=['POST'])
 def submit_code():
 	print(request.get_json())
