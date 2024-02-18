@@ -66,7 +66,6 @@ def get_leaderboard(game_name):
 
 	for bot in game_bots:
 		for opp in game_bots:
-			print(bot, opp)
 			opp_func = game_bots[opp]
 			bot_func = game_bots[bot]
 			env = games_dictionary[game_name](bot_func, opp_func, False)
