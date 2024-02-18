@@ -79,7 +79,7 @@ export default function Leaderboard() {
   }, [routeParams.name]);
 
   return (
-    <div>
+    <Box padding={2}>
       <Box bgcolor="white" padding={2} marginBottom={2}>
         <Typography variant="h3" color="black">
           {routeParams.name}
@@ -87,6 +87,7 @@ export default function Leaderboard() {
       </Box>
       <div className="container">
         <div id="leaderBoardTable">
+          <Typography variant="h3">Leaderboard</Typography>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
@@ -176,6 +177,6 @@ export default function Leaderboard() {
         </TabContext>
         </Box>
       </div>
-    </div>
+    </Box>
   );
 }

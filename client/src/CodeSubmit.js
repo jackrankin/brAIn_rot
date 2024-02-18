@@ -56,7 +56,7 @@ function CodeSubmit({ game_name }) {
               onChange={(e) => setName(e.target.value)}
             />
             <CodeMirror
-              height={"400px"}
+              height={"300px"}
               value={userCode}
               theme={vscodeDark}
               onChange={onChange}
