@@ -13,10 +13,12 @@ import {
 import { code_map } from "./Constants";
 import axios from "axios";
 import "./CodeSubmit.css";
+import { useNavigate } from "react-router-dom";
 function CodeSubmit({ game_name }) {
   const [userCode, setUserCode] = useState(code_map[game_name]);
   const [name, setName] = useState("");
 
+  let navigate = useNavigate();
   const onChange = (value) => {
     setUserCode(value);
   };
@@ -30,27 +32,30 @@ function CodeSubmit({ game_name }) {
       })
       .then((res) => {
         console.log(res);
+        console.log(game_name);
+        navigate("/Leaderboard/" + game_name);
       });
   };
 
   return (
     <Box id="CodeSubmit">
-      <Box padding={2} display="grid" justifyContent="center">
-        <DialogContent>
+      <Box display="flex" justifyContent="center">
+        <DialogContent style={{ width: "70%" }}>
           <DialogContentText id="alert-dialog-description">
             Submit your own bot!
           </DialogContentText>
           <Stack spacing={2}>
-            <CodeMirror
-              value={userCode}
-              theme={vscodeDark}
-              onChange={onChange}
-              extensions={[python()]}
-            />
             <TextField
               label="Name Your Bot"
               type="name"
               onChange={(e) => setName(e.target.value)}
+            />
+            <CodeMirror
+              height={"400px"}
+              value={userCode}
+              theme={vscodeDark}
+              onChange={onChange}
+              extensions={[python()]}
             />
             <Button variant="contained" onClick={submitCode} disabled={!name}>
               Submit Bot

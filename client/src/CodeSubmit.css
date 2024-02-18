@@ -1,4 +1,17 @@
+/* CodeSubmit.css */
+
 #CodeSubmit {
-  justify-content: "center";
-  padding: 2;
+  display: flex;
+  justify-content: center; /* horizontally center the content */
+}
+
+#CodeSubmit > * {
+  flex: 1; /* each child takes up equal space */
+}
+
+.MuiDialogContent-root {
+  width: 100%; /* ensure the dialog content takes full width */
+}
+#codeMirror {
+  width: 100%;
 }

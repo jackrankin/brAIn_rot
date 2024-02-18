@@ -22,6 +22,12 @@ const rows = [
   createData("Chaitra Bot", 50, 9.0, 37),
   createData("Jack Bot", 3, 25, 24),
 ];
+const reverseMap = {
+  rockpaperscissors: "Rock, Paper, Scissors!",
+  connect4: "Connect4",
+  tron: "Tron",
+  filler: "Filler",
+};
 
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -50,30 +56,34 @@ export default function Leaderboard() {
   return (
     <div>
       <Typography variant="h2" style={{ marginBottom: "20px" }}>
-        {"Top bots for " + (routeParams ? routeParams.name : "")}
+        {routeParams ? reverseMap[routeParams.name] : ""}
       </Typography>
-      <div id="leaderBoardTable">
-        <TableContainer component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Rank</TableCell>
-                <TableCell>Bot Name</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {leaderboardData.map((element, index) => (
-                <TableRow key={index}>
-                  <TableCell component="th" scope="row">
-                    {index + 1}
-                  </TableCell>
-                  <TableCell>{element.value}</TableCell>
+      <div className="container">
+        <div id="leaderBoardTable">
+          <TableContainer component={Paper}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Rank</TableCell>
+                  <TableCell>Bot Name</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <CodeSubmit game_name={"connect4"} />
+              </TableHead>
+              <TableBody>
+                {leaderboardData.map((element, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell>{element.value}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+        <div id="codeSubmit">
+          <CodeSubmit game_name={routeParams.name.toLowerCase()} />
+        </div>
       </div>
     </div>
   );
