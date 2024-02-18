@@ -1,0 +1,13 @@
+#leaderBoardTable {
+  display: flex;
+  justify-content: center; /* horizontally center the content */
+}
+
+#leaderBoardTable > * {
+  flex: 1; /* each child takes up equal space */
+  margin-right: 10px;
+}
+
+#leaderBoardTable .MuiPaper-root {
+  width: 75%; /* ensure the table takes full width */
+}

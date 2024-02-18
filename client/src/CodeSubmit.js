@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { code_map } from "./Constants";
 import axios from "axios";
-
+import "./CodeSubmit.css";
 function CodeSubmit({ game_name }) {
   const [userCode, setUserCode] = useState(code_map[game_name]);
   const [name, setName] = useState("");
@@ -23,7 +23,7 @@ function CodeSubmit({ game_name }) {
 
   const submitCode = () => {
     axios
-      .post('http://localhost:80/submit_code', {
+      .post("http://localhost:80/submit_code", {
         code: userCode,
         game: game_name,
         name: name,
@@ -34,30 +34,30 @@ function CodeSubmit({ game_name }) {
   };
 
   return (
-    <Box display="grid" justifyContent="center" padding={2}>
-        <Box padding={2} display="grid" justifyContent="center">
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Submit your own bot!
-            </DialogContentText>
-            <Stack spacing={2}>
-              <CodeMirror
-                value={userCode}
-                theme={vscodeDark}
-                onChange={onChange}
-                extensions={[python()]}
-              />
-              <TextField
-                label="Name Your Bot"
-                type="name"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Button variant="contained" onClick={submitCode} disabled={!name}>
-                Submit Bot
-              </Button>
-            </Stack>
-          </DialogContent>
-        </Box>
+    <Box id="CodeSubmit">
+      <Box padding={2} display="grid" justifyContent="center">
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Submit your own bot!
+          </DialogContentText>
+          <Stack spacing={2}>
+            <CodeMirror
+              value={userCode}
+              theme={vscodeDark}
+              onChange={onChange}
+              extensions={[python()]}
+            />
+            <TextField
+              label="Name Your Bot"
+              type="name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Button variant="contained" onClick={submitCode} disabled={!name}>
+              Submit Bot
+            </Button>
+          </Stack>
+        </DialogContent>
+      </Box>
     </Box>
   );
 }

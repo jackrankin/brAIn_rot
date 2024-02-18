@@ -11,6 +11,7 @@ import { Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CodeSubmit from "./CodeSubmit";
 import axios from "axios";
+import "./gameLeaderboard.css";
 
 function createData(name, points, time, memory) {
   return { name, points, time, memory };
@@ -51,29 +52,29 @@ export default function Leaderboard() {
       <Typography variant="h2" style={{ marginBottom: "20px" }}>
         {"Top bots for " + (routeParams ? routeParams.name : "")}
       </Typography>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Rank</TableCell>
-              <TableCell align="right">Bot Name</TableCell>
-              <TableCell align="right">Time(s)</TableCell>
-              <TableCell align="right">Memory(mb)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {leaderboardData.map((element, index) => (
-              <TableRow key={index}>
-                <TableCell component="th" scope="row">
-                  {index + 1}
-                </TableCell>
-                <TableCell align="right">{element.value}</TableCell>
+      <div id="leaderBoardTable">
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Rank</TableCell>
+                <TableCell>Bot Name</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <CodeSubmit game_name={"connect4"} />
+            </TableHead>
+            <TableBody>
+              {leaderboardData.map((element, index) => (
+                <TableRow key={index}>
+                  <TableCell component="th" scope="row">
+                    {index + 1}
+                  </TableCell>
+                  <TableCell>{element.value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <CodeSubmit game_name={"connect4"} />
+      </div>
     </div>
   );
 }
