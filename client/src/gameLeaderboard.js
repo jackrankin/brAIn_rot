@@ -80,7 +80,7 @@ export default function Leaderboard() {
     <Box padding={2}>
       <Box bgcolor="white" padding={2} marginBottom={2}>
         <Typography variant="h3" color="black">
-          {routeParams.name}
+          {reverseMap[routeParams.name]}
         </Typography>
       </Box>
       <div className="container">
