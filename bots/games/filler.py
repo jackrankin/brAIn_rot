@@ -110,9 +110,9 @@ class Filler(object):
 				self._json_render()
 			win = self._detect_win() | self.winner
 		if win == 1:
-			self.winner = 1
+			self.winner = 2
 			if self.render: print(self.color_map[self.p1c], "WINS")
 		elif win == 2:
-			self.winner = 2
+			self.winner = 1
 			if self.render: print(self.color_map[self.p2c], "WINS")
 

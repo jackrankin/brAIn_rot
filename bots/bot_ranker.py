@@ -41,10 +41,6 @@ def get_bot_dict(game):
 
 def rank_bot(bot_name, game_name):
 
-	lt = []
-	for i in range(0, 100000):
-		lt.append(i)
-
 	game_bots = get_bot_dict(game_name)
 	bot_wins = defaultdict(int)	
 	rank = len(game_bots) - 1
