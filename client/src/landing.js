@@ -2,6 +2,7 @@ import React from "react";
 import GameCard from "./GameCard";
 import { Box, Grid, Typography } from "@mui/material";
 import "./landing.css"; // Import the CSS file
+import GameView from "./GameView";
 
 const users = [
   {
@@ -30,6 +31,7 @@ function LandingPage() {
         <GameCard game_name={"Rock, Paper, Scissors!"} />
         <GameCard game_name={"Filler"} />
         <GameCard game_name={"Tron"} />
+        <GameView game_name={"filler"} player1={"filler_random"} player2={"filler_random"} />
       </div>
     </Box>
   );
