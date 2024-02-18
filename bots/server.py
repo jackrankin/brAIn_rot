@@ -18,7 +18,6 @@ def leaderboard(game_name):
 @app.route('/get_rank/<game_name>/<bot_name>', methods=['GET'])
 def get_rank(game_name, bot_name):
 	result = get_leaderboard(game_name)
-
 	for key in result:
 		if result[key] == bot_name:
 			return {"rank" : str(key)}
