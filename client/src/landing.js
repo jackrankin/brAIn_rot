@@ -13,7 +13,6 @@ function LandingPage() {
           brAIn rot
         </Typography>
       </Box>
-      <GameView game_name={'connect4'} player1={'connect4_random'} player2={'connect4_random'} />
       <div className="container">
         <div className="cardContainer">
           <GameCard game_name={"Connect4"} />
