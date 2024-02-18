@@ -22,7 +22,9 @@ function LandingPage() {
           <GameCard game_name={"Tron"} />
         </div>
         <div className="leaderboardContainer">
-          <Leaderboard />
+          <Leaderboard rows={[{name: 'me', value: '2'}, {name: 'mesfsf', value: '23'}, {name: 'mesfsf', value: '3'}]} game={'connect4'}/>
+          <Leaderboard rows={[{name: 'me', value: '2'}, {name: 'mesfsf', value: '23'}, {name: 'mesfsf', value: '3'}]} game={'rockpaperscissors'}/>
+          <Leaderboard rows={[{name: 'me', value: '2'}, {name: 'mesfsf', value: '23'}, {name: 'mesfsf', value: '3'}]} game={'filler'}/>
         </div>
       </div>
     </Box>
