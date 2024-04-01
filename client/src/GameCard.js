@@ -4,11 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import c4GIF from "./gameImages/c4.gif";
-import FILLERGIF from "./gameImages/filler.gif";
-import tronGIF from "./gameImages/tron.gif";
-import RPGIF from "./gameImages/rp.gif";
-import Leaderboard from "./leaderboard.js";
+import c4GIF from "./images/c4.gif";
+import FILLERGIF from "./images/filler.gif";
+import tronGIF from "./images/tron.gif";
+import RPGIF from "./images/rp.gif";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
@@ -30,12 +29,6 @@ const linkMap = {
   Filler: "filler",
 };
 
-const leaderBoardMap = {
-  Connect4: { Leaderboard },
-  Filler: { Leaderboard },
-  Tron: { Leaderboard },
-  RockPaperScissors: { Leaderboard },
-};
 export default function GameCard({ game_name }) {
   let navigate = useNavigate();
 

@@ -9,9 +9,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography, Button, Box, Tab, IconButton } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
-import CodeSubmit from "./CodeSubmit";
+import CodeSubmit from "./CodeSubmit.js";
 import axios from "axios";
-import "./gameLeaderboard.css";
+import "./GamePage.css";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -82,7 +82,7 @@ export default function Leaderboard() {
       </Box>
       <div className="container">
         <div id="leaderBoardTable">
-          <Typography variant="h3">Leaderboard</Typography>
+          <Typography variant="h4">Leaderboard</Typography>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
