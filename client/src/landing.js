@@ -80,6 +80,7 @@ function LandingPage() {
           <GameCard game_name={"Connect4"} />
           <GameCard game_name={"Filler"} />
           <GameCard game_name={"Tron"} />
+          <GameCard game_name={"Risk"} />
           {/* <GameCard game_name={"Rock, Paper, Scissors!"} /> */}
         </div>
         <div className="leaderboardContainer" flex="1" justifyContent="center">
