@@ -1,14 +1,13 @@
 import React from "react";
 import GameCard from "./GameCard";
 import Leaderboard from "./leaderboard.js";
-import "./landing.css"; // Import the CSS file
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import axios from "axios";
-import "./App.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Rick from "./rick.js";
+import "./App.css";
+import "./landing.css";
 
 function LandingPage() {
   const [currentLeaderboardIndex, setCurrentLeaderboardIndex] = useState(0);
@@ -72,14 +71,16 @@ function LandingPage() {
         <Typography variant="h3" color="black">
           brAIn🧠rot
         </Typography>
-        {nextCount == 10 ? <Rick/> : <></>}
+        {nextCount === 10 ? <Rick/> : <></>}
       </Box>
       <div className="container">
         <div className="cardContainer">
+          <GameCard game_name={"Chess"} />
+          <GameCard game_name={"Othello"} />
           <GameCard game_name={"Connect4"} />
-          <GameCard game_name={"Rock, Paper, Scissors!"} />
           <GameCard game_name={"Filler"} />
           <GameCard game_name={"Tron"} />
+          {/* <GameCard game_name={"Rock, Paper, Scissors!"} /> */}
         </div>
         <div className="leaderboardContainer" flex="1" justifyContent="center">
           <Leaderboard

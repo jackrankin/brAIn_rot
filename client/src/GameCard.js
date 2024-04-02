@@ -8,6 +8,8 @@ import c4GIF from "./images/c4.gif";
 import FILLERGIF from "./images/filler.gif";
 import tronGIF from "./images/tron.gif";
 import RPGIF from "./images/rp.gif";
+import chessGIF from "./images/chess.gif";
+import othelloGIF from "./images/othello.gif";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
@@ -15,12 +17,16 @@ const imageMap = {
   Tron: tronGIF,
   Filler: FILLERGIF,
   "Rock, Paper, Scissors!": RPGIF,
+  "Chess": chessGIF,
+  "Othello": othelloGIF
 };
 const descriptionMap = {
-  Connect4: "THIS IS CONNECT FOUR IT IS FUN",
+  Connect4: "A game where players try to create horizontal, vertical, or diagonal rows of four.",
   Tron: "THIS IS TRON IT IS A FUN GAME",
-  Filler: "FILLLLLLLER",
+  Filler: "A color matching game where the goal is to fill the board with your color.",
   "Rock, Paper, Scissors!": "ROCK, OR PAPER, or scissors",
+  "Chess": "A strategy game where the goal is to checkmate your opponent.",
+  "Othello": "AKA Reversi, a two-player strategy game where the goal is to dominate the board."
 };
 const linkMap = {
   "Rock, Paper, Scissors!": "rockpaperscissors",
