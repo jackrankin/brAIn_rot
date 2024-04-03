@@ -11,13 +11,14 @@ import RPGIF from "./images/rp.gif";
 import chessGIF from "./images/chess.gif";
 import othelloGIF from "./images/othello.gif";
 import riskIMG from "./images/risk.png";
-
+import goGIF from "./images/go.gif";
 import { useNavigate } from "react-router-dom";
 
 const imageMap = {
   Connect4: c4GIF,
   Tron: tronGIF,
   Filler: FILLERGIF,
+  "Go": goGIF,
   "Rock, Paper, Scissors!": RPGIF,
   "Chess": chessGIF,
   "Othello": othelloGIF,
@@ -25,8 +26,9 @@ const imageMap = {
 };
 const descriptionMap = {
   Connect4: "A game where players try to create horizontal, vertical, or diagonal rows of four.",
-  Tron: "A two player game where each user controls their own car and attempts to avoid crashing into their trails and the walls.",
+  Tron: "A game where each user controls their car and attempts to avoid crashing into their trails and the walls.",
   Risk: "A strategy board game of diplomacy, conflict, and conquest for two to six players.",
+  Go: "Go is an anvient Chinese strategy board game where you capture more territory than the opponent by fencing off empty space.",
   Filler: "A color matching game where the goal is to fill the board with your color.",
   "Rock, Paper, Scissors!": "ROCK, OR PAPER, or scissors",
   "Chess": "A strategy game where the goal is to checkmate your opponent.",

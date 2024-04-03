@@ -1,0 +1,14 @@
+def count_numbers():
+    count = 0
+    for i in range(4444, 10000):
+        num_str = str(i)
+        if '5' in num_str and '7' in num_str:
+            even_count_4 = num_str.count('4') % 2 == 0
+            even_count_6 = num_str.count('6') % 2 == 0
+            if even_count_4 and even_count_6 and '0' not in num_str and '1' not in num_str and '2' not in num_str and '3' not in num_str:
+                count += 1
+                print(i)
+    return count
+
+result = count_numbers()
+print("Total count:", result)
